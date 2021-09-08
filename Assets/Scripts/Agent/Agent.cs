@@ -5,11 +5,11 @@ using System;
 
 public class Agent : MonoBehaviour
 {
-    private StateMachine stateMachine;
+    public StateMachine StateMachine { get; private set; }
 
     private void Awake()
     {
-        stateMachine = new StateMachine();
+        StateMachine = new StateMachine();
     }
 
     private void Start()
@@ -17,14 +17,14 @@ public class Agent : MonoBehaviour
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(Idling), new Idling(gameObject) },
-            {typeof(Moving), new Moving(gameObject) },
+            {typeof(Walking), new Walking(gameObject) },
         };
-        stateMachine.SetStates(states, typeof(Idling));
+        StateMachine.SetStates(states, typeof(Idling));
     }
 
     private void Update()
     {
-        stateMachine.ExecuteState();
+        StateMachine.ExecuteState();
     }
 
 }

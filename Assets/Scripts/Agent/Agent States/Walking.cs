@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Moving : AgentState
+public class Walking : AgentState
 {
-    public Moving(GameObject gameObject) : base(gameObject)
+    public Walking(GameObject gameObject) : base(gameObject)
     {
 
     }
@@ -16,7 +16,7 @@ public class Moving : AgentState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Moving");
+        Debug.Log("Walking");
     }
 
     public override void DuringExecution()
