@@ -1114,7 +1114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSpeed: 15
   zoomSpeed: 1
-  rotationSpeed: 1
+  rotationSpeed: 40
 --- !u!4 &1211060584
 Transform:
   m_ObjectHideFlags: 0
@@ -2710,7 +2710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c604e5e643229f45baab437a2844116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultController: {fileID: 0}
+  defaultController: {fileID: 9100000, guid: a42e58d2c1e2723419125cf2d783af7a, type: 2}
 --- !u!1 &1806527295136253
 GameObject:
   m_ObjectHideFlags: 0
@@ -4817,7 +4817,7 @@ Animator:
   m_GameObject: {fileID: 1781282456529727}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 25470d2c5b22db9419d9c896601cab60, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a42e58d2c1e2723419125cf2d783af7a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1

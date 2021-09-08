@@ -19,11 +19,31 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'UpperLeg_L'
+      : position error = 10982.589844 mm\n\t'LowerLeg_L' : position error = 39682.531250
+      mm\n\t'Ankle_L' : position error = 37477.726563 mm\n\t'Ball_L' : position error
+      = 11213.813477 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
-    animationRetargetingWarnings: 
-    animationDoRetargetingWarnings: 0
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'mixamo.com':\n\tLeftLowerLeg
+      average position error 947.1 mm and maximum position error 948.0 mm at time
+      0: 8 (12.7%) Frame 8\n\tLeftFoot average position error 947.1 mm and maximum
+      position error 948.0 mm at time 0: 8 (12.7%) Frame 8\n\tRightLowerLeg average
+      position error 947.0 mm and maximum position error 947.9 mm at time 0: 8 (12.7%)
+      Frame 8\n\tRightFoot average position error 947.0 mm and maximum position error
+      948.0 mm at time 0: 8 (12.7%) Frame 8\n\tLeftUpperArm average position error
+      947.0 mm and maximum position error 948.0 mm at time 0: 8 (12.7%) Frame 8\n\tLeftLowerArm
+      average position error 947.1 mm and maximum position error 948.0 mm at time
+      0: 8 (12.7%) Frame 8\n\tLeftHand average position error 947.0 mm and maximum
+      position error 948.0 mm at time 0: 8 (12.7%) Frame 8\n\tRightUpperArm average
+      position error 947.0 mm and maximum position error 948.0 mm at time 0: 8 (12.7%)
+      Frame 8\n\tRightLowerArm average position error 947.1 mm and maximum position
+      error 948.0 mm at time 0: 8 (12.7%) Frame 8\n\tRightHand average position error
+      947.0 mm and maximum position error 948.0 mm at time 0: 8 (12.7%) Frame 8\n\tHead
+      average position error 947.0 mm and maximum position error 948.0 mm at time
+      0: 8 (12.7%) Frame 8\n"
+    animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
     importConstraints: 0
     animationCompression: 3
@@ -33,7 +53,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: mixamo.com
+      takeName: mixamo.com
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 63
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: -0.8
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
