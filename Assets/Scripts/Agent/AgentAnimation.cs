@@ -12,7 +12,7 @@ public class AgentAnimation : MonoBehaviour
     Animator anim;
     MultiDictionary<Type, int> animStates;
 
-    private void Start()
+    private void Awake()
     {
         agent = GetComponentInParent<Agent>();
         agent.StateMachine.OnStateChange += UpdateAnimation;
