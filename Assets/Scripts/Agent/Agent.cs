@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using System;
 
 public class Agent : MonoBehaviour
 {
     public StateMachine StateMachine { get; private set; }
 
+    private NavMeshAgent navAgent;
+
     private void Awake()
     {
         StateMachine = new StateMachine();
+        navAgent = GetComponent<NavMeshAgent>();
     }
 
     private void Start()
@@ -25,6 +29,11 @@ public class Agent : MonoBehaviour
     private void Update()
     {
         StateMachine.ExecuteState();
+    }
+
+    public void SetDestination(Vector3 pos)
+    {
+        navAgent.SetDestination(pos);
     }
 
 }

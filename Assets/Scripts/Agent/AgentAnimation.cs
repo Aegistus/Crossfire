@@ -17,7 +17,10 @@ public class AgentAnimation : MonoBehaviour
         agent = GetComponentInParent<Agent>();
         agent.StateMachine.OnStateChange += UpdateAnimation;
         anim = GetComponent<Animator>();
-        anim.runtimeAnimatorController = defaultController;
+        if (defaultController == null && anim.runtimeAnimatorController == null)
+        {
+            anim.runtimeAnimatorController = defaultController;
+        }
         animStates = new MultiDictionary<Type, int>()
         {
             {typeof(Idling), Animator.StringToHash("Idling") },
