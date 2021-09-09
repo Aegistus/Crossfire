@@ -6,13 +6,12 @@ using System;
 
 public class Agent : MonoBehaviour
 {
-    public StateMachine StateMachine { get; private set; }
+    public StateMachine StateMachine { get; private set; } = new StateMachine();
 
     private NavMeshAgent navAgent;
 
     private void Awake()
     {
-        StateMachine = new StateMachine();
         navAgent = GetComponent<NavMeshAgent>();
     }
 
