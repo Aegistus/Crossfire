@@ -11,14 +11,15 @@ public class Squad : MonoBehaviour
 
     public StateMachine StateMachine { get; private set; } = new StateMachine();
     public Vector3 Position { get; private set; }
+    public Vector3 Destination { get; private set; }
 
-    private bool isSelected = false;
     private List<Agent> agents;
 
     private void Start()
     {
         agents = GetComponentsInChildren<Agent>().ToList();
         CentralizePosition();
+        Destination = Position;
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(Standing), new Standing(gameObject, this) },
@@ -66,6 +67,15 @@ public class Squad : MonoBehaviour
         for (int i = 0; i < selectionMarkers.Length; i++)
         {
             selectionMarkers[i].SetActive(false);
+        }
+    }
+
+    public void MoveOrder(Vector3 destination)
+    {
+        Destination = destination;
+        for (int i = 0; i < agents.Count; i++)
+        {
+            agents[i].SetDestination(destination);
         }
     }
 }

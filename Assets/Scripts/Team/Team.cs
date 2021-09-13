@@ -10,8 +10,11 @@ public abstract class Team : MonoBehaviour
 
     public void SelectSquad(Squad toSelect)
     {
-        toSelect.Select();
-        selectedSquads.Add(toSelect);
+        if (squadsOnTeam.Contains(toSelect))
+        {
+            toSelect.Select();
+            selectedSquads.Add(toSelect);
+        }
     }
 
     public void DeselectSquad(Squad toDeselect)
@@ -27,5 +30,13 @@ public abstract class Team : MonoBehaviour
             selectedSquads[i].Deselect();
         }
         selectedSquads.Clear();
+    }
+
+    public void GiveMoveOrder(Vector3 position)
+    {
+        for (int i = 0; i < selectedSquads.Count; i++)
+        {
+            selectedSquads[i].MoveOrder(position);
+        }
     }
 }

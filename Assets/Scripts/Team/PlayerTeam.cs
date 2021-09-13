@@ -20,12 +20,10 @@ public class PlayerTeam : Team
     {
         if (Input.GetMouseButtonDown(0))
         {
-            print("Test 1");
             Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer, QueryTriggerInteraction.Collide);
             Squad selected = rayHit.collider?.GetComponentInParent<Squad>();
             if (selected != null)
             {
-                print("Test 2");
                 SelectSquad(selected);
             }
             else
