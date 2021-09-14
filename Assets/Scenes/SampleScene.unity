@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 35203365}
   - component: {fileID: 52885883}
   - component: {fileID: 35469290}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 36519145}
   - component: {fileID: 37445521}
   - component: {fileID: 41759927}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MT_Terrain_L_a_01_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 36446933}
   - component: {fileID: 37524933}
   - component: {fileID: 41854065}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MT_Terrain_L_a_01_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 36456675}
   - component: {fileID: 37521833}
   - component: {fileID: 41766069}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MT_Terrain_L_a_01_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,6 +955,9 @@ MonoBehaviour:
   selectablesLayer:
     serializedVersion: 2
     m_Bits: 64
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!4 &1383689722
 Transform:
   m_ObjectHideFlags: 0

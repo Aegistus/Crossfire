@@ -75,7 +75,7 @@ public class Squad : MonoBehaviour
         Destination = destination;
         for (int i = 0; i < agents.Count; i++)
         {
-            agents[i].SetDestination(destination);
+            agents[i].SetDestination(new Vector3(Destination.x + agentPositions[i].x, Destination.y, Destination.z + agentPositions[i].y));
         }
     }
 }
