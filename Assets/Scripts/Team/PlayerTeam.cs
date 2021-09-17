@@ -26,7 +26,6 @@ public class PlayerTeam : Team
             if (selected != null)
             {
                 SelectCommandable(selected);
-                print("Test 1");
             }
             else
             {

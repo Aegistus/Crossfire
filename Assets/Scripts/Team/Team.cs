@@ -22,7 +22,6 @@ public abstract class Team : MonoBehaviour
     {
         if (unitsOnTeam.Contains(toSelect))
         {
-            print("Test 2");
             toSelect.Select();
             selectedUnits.Add(toSelect);
         }

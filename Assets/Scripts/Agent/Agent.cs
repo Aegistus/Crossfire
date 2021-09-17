@@ -48,7 +48,6 @@ public class Agent : MonoBehaviour, ICommandable
 
     public void Select()
     {
-        print("Test 3");
         for (int i = 0; i < selectionMarkers.Length; i++)
         {
             selectionMarkers[i].SetActive(true);
