@@ -41,8 +41,8 @@ public class AgentAnimation : MonoBehaviour
         }
     }
 
-    private void OnAnimatorMove()
-    {
-        transform.parent.position += anim.deltaPosition;
-    }
+    //private void OnAnimatorMove()
+    //{
+    //    transform.parent.position += anim.deltaPosition;
+    //}
 }

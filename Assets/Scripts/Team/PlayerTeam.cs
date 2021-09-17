@@ -11,7 +11,7 @@ public class PlayerTeam : Team
 
     Camera mainCam;
 
-    private void Awake()
+    private void Start()
     {
         mainCam = Camera.main;
     }
@@ -22,14 +22,15 @@ public class PlayerTeam : Team
         if (Input.GetMouseButtonDown(0))
         {
             Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer, QueryTriggerInteraction.Collide);
-            Squad selected = rayHit.collider?.GetComponentInParent<Squad>();
+            ICommandable selected = rayHit.collider?.GetComponentInParent(typeof(ICommandable)) as ICommandable;
             if (selected != null)
             {
-                SelectSquad(selected);
+                SelectCommandable(selected);
+                print("Test 1");
             }
             else
             {
-                DeselectAllSquads();
+                DeselectAll();
             }
         }
         if (Input.GetMouseButtonUp(1))

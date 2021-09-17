@@ -13,6 +13,6 @@ public abstract class AgentState : State
         navAgent = gameObject.GetComponent<NavMeshAgent>();
     }
 
-    public Func<bool> AtDestination => () => Vector3.Distance(navAgent.destination, transform.position) <= .1f;
+    public Func<bool> AtDestination => () => navAgent.velocity.magnitude > 0;
 
 }

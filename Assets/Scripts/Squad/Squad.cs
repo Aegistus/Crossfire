@@ -4,10 +4,9 @@ using System.Linq;
 using UnityEngine;
 using System;
 
-public class Squad : MonoBehaviour
+public class Squad : MonoBehaviour, ICommandable
 {
     public Vector2[] agentPositions;
-    public GameObject[] selectionMarkers;
 
     public StateMachine StateMachine { get; private set; } = new StateMachine();
     public Vector3 Position { get; private set; }
@@ -24,9 +23,9 @@ public class Squad : MonoBehaviour
             {typeof(SquadMoving), new SquadMoving(gameObject, this) },
         };
         StateMachine.SetStates(states, typeof(SquadStanding));
-        for (int i = 0; i < selectionMarkers.Length; i++)
+        for (int i = 0; i < agents.Count; i++)
         {
-            selectionMarkers[i].SetActive(false);
+            agents[i].Deselect();
         }
     }
 
@@ -47,32 +46,32 @@ public class Squad : MonoBehaviour
         {
             if (i < agentPositions.Length)
             {
-                agents[i].SetDestination(new Vector3(Position.x + agentPositions[i].x, Position.y, Position.z + agentPositions[i].y));
+                agents[i].Move(new Vector3(Position.x + agentPositions[i].x, Position.y, Position.z + agentPositions[i].y));
             }
         }
     }
 
     public void Select()
     {
-        for (int i = 0; i < selectionMarkers.Length; i++)
+        for (int i = 0; i < agents.Count; i++)
         {
-            selectionMarkers[i].SetActive(true);
+            agents[i].Select();
         }
     }
 
     public void Deselect()
     {
-        for (int i = 0; i < selectionMarkers.Length; i++)
+        for (int i = 0; i < agents.Count; i++)
         {
-            selectionMarkers[i].SetActive(false);
+            agents[i].Deselect();
         }
     }
 
-    public void MoveOrder(Vector3 destination)
+    public void Move(Vector3 destination)
     {
         for (int i = 0; i < agents.Count; i++)
         {
-            agents[i].SetDestination(new Vector3(destination.x + agentPositions[i].x, destination.y, destination.z + agentPositions[i].y));
+            agents[i].Move(new Vector3(destination.x + agentPositions[i].x, destination.y, destination.z + agentPositions[i].y));
         }
     }
 }

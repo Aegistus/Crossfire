@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 
-public class Agent : MonoBehaviour
+public class Agent : MonoBehaviour, ICommandable
 {
+    public GameObject[] selectionMarkers;
+
     public StateMachine StateMachine { get; private set; } = new StateMachine();
 
     private NavMeshAgent navAgent;
@@ -23,20 +25,41 @@ public class Agent : MonoBehaviour
             {typeof(Walking), new Walking(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
+        Move(transform.position);
+        Deselect();
     }
 
     private void Update()
     {
         StateMachine.ExecuteState();
+
+        // make agent stop moving when arrived
         if (transform.position != navAgent.destination && Vector3.Distance(transform.position, navAgent.destination) <= .1f)
         {
-            SetDestination(transform.position);
+            Move(transform.position);
         }
     }
 
-    public void SetDestination(Vector3 pos)
+
+    public void Move(Vector3 position)
     {
-        navAgent.SetDestination(pos);
+        navAgent.SetDestination(position);
     }
 
+    public void Select()
+    {
+        print("Test 3");
+        for (int i = 0; i < selectionMarkers.Length; i++)
+        {
+            selectionMarkers[i].SetActive(true);
+        }
+    }
+
+    public void Deselect()
+    {
+        for (int i = 0; i < selectionMarkers.Length; i++)
+        {
+            selectionMarkers[i].SetActive(false);
+        }
+    }
 }

@@ -4,39 +4,50 @@ using UnityEngine;
 
 public abstract class Team : MonoBehaviour
 {
-    public List<Squad> squadsOnTeam = new List<Squad>();
+    public List<GameObject> teamUnitsGameObjects = new List<GameObject>();
 
-    private List<Squad> selectedSquads = new List<Squad>();
+    public List<ICommandable> unitsOnTeam = new List<ICommandable>();
 
-    public void SelectSquad(Squad toSelect)
+    private List<ICommandable> selectedUnits = new List<ICommandable>();
+
+    private void Awake()
     {
-        if (squadsOnTeam.Contains(toSelect))
+        for (int i = 0; i < teamUnitsGameObjects.Count; i++)
         {
-            toSelect.Select();
-            selectedSquads.Add(toSelect);
+            unitsOnTeam.Add(teamUnitsGameObjects[i].GetComponent(typeof(ICommandable)) as ICommandable);
         }
     }
 
-    public void DeselectSquad(Squad toDeselect)
+    public void SelectCommandable(ICommandable toSelect)
+    {
+        if (unitsOnTeam.Contains(toSelect))
+        {
+            print("Test 2");
+            toSelect.Select();
+            selectedUnits.Add(toSelect);
+        }
+    }
+
+    public void DeselectCommandable(ICommandable toDeselect)
     {
         toDeselect.Deselect();
-        selectedSquads.Remove(toDeselect);
+        selectedUnits.Remove(toDeselect);
     }
 
-    public void DeselectAllSquads()
+    public void DeselectAll()
     {
-        for (int i = 0; i < selectedSquads.Count; i++)
+        for (int i = 0; i < selectedUnits.Count; i++)
         {
-            selectedSquads[i].Deselect();
+            selectedUnits[i].Deselect();
         }
-        selectedSquads.Clear();
+        selectedUnits.Clear();
     }
 
     public void GiveMoveOrder(Vector3 position)
     {
-        for (int i = 0; i < selectedSquads.Count; i++)
+        for (int i = 0; i < selectedUnits.Count; i++)
         {
-            selectedSquads[i].MoveOrder(position);
+            selectedUnits[i].Move(position);
         }
     }
 }
