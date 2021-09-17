@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Moving : SquadState
+public class SquadMoving : SquadState
 {
-    public Moving(GameObject gameObject, Squad unit) : base(gameObject, unit)
+    public SquadMoving(GameObject gameObject, Squad unit) : base(gameObject, unit)
     {
         
     }
@@ -16,7 +16,7 @@ public class Moving : SquadState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Moving");
+        Debug.Log("Squad Moving");
     }
 
     public override void DuringExecution()

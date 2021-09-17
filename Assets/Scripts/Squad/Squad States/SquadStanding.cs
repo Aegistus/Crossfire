@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Walking : AgentState
+public class SquadStanding : SquadState
 {
-    public Walking(GameObject gameObject) : base(gameObject)
+
+    public SquadStanding(GameObject gameObject, Squad unit) : base(gameObject, unit)
     {
-        transitionsTo.Add(new Transition(typeof(Idling), Not(AtDestination)));
+
     }
 
     public override void AfterExecution()
@@ -16,7 +17,7 @@ public class Walking : AgentState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Walking");
+        Debug.Log("Squad Standing");
     }
 
     public override void DuringExecution()

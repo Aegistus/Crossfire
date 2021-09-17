@@ -28,6 +28,10 @@ public class Agent : MonoBehaviour
     private void Update()
     {
         StateMachine.ExecuteState();
+        if (transform.position != navAgent.destination && Vector3.Distance(transform.position, navAgent.destination) <= .1f)
+        {
+            SetDestination(transform.position);
+        }
     }
 
     public void SetDestination(Vector3 pos)
