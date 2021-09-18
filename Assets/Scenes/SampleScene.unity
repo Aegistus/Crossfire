@@ -931,6 +931,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
+  coverLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!4 &1383689722
 Transform:
   m_ObjectHideFlags: 0
@@ -1577,9 +1580,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 570583358}
     m_Modifications:
+    - target: {fileID: 141501783, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 517058862, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 533032958, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031558382, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459057277, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995778674971910663, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2995778675386433041, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
       propertyPath: m_Name
       value: Stone Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 2995778675386433041, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2995778675386433042, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
       propertyPath: m_RootOrder
@@ -1587,7 +1618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2995778675386433042, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 17.732704
+      value: -1.08
       objectReference: {fileID: 0}
     - target: {fileID: 2995778675386433042, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1595,7 +1626,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2995778675386433042, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.471233
+      value: 3.12
       objectReference: {fileID: 0}
     - target: {fileID: 2995778675386433042, guid: 0f9aa288b4733ba4eb9ce618e672c79d, type: 3}
       propertyPath: m_LocalRotation.w

@@ -46,7 +46,23 @@ public abstract class Team : MonoBehaviour
     {
         for (int i = 0; i < selectedUnits.Count; i++)
         {
+            if (selectedUnits[i].InCover)
+            {
+                selectedUnits[i].MoveOutOfCover();
+            }
             selectedUnits[i].Move(position);
+        }
+    }
+
+    public void GiveMoveToCoverOrder(Cover cover)
+    {
+        for (int i = 0; i < selectedUnits.Count; i++)
+        {
+            if (selectedUnits[i].InCover)
+            {
+                selectedUnits[i].MoveOutOfCover();
+            }
+            selectedUnits[i].MoveToCover(cover);
         }
     }
 }

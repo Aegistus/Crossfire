@@ -8,6 +8,7 @@ public class PlayerTeam : Team
 {
     public LayerMask selectablesLayer;
     public LayerMask groundLayer;
+    public LayerMask coverLayer;
 
     Camera mainCam;
 
@@ -38,6 +39,13 @@ public class PlayerTeam : Team
             if (rayHit.collider != null)
             {
                 GiveMoveOrder(rayHit.point);
+            }
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
+            Cover cover = rayHit.collider.GetComponentInParent<Cover>();
+            if (rayHit.collider != null)
+            {
+                print("Give Move to Cover Order");
+                GiveMoveToCoverOrder(cover);
             }
         }
     }

@@ -8,9 +8,13 @@ public class Agent : MonoBehaviour, ICommandable
 {
     public GameObject[] selectionMarkers;
 
+    public bool InCover => currentCover != null;
     public StateMachine StateMachine { get; private set; } = new StateMachine();
 
     private NavMeshAgent navAgent;
+
+    private Cover currentCover;
+    private Transform currentCoverPosition;
 
     private void Awake()
     {
@@ -40,7 +44,6 @@ public class Agent : MonoBehaviour, ICommandable
         }
     }
 
-
     public void Move(Vector3 position)
     {
         navAgent.SetDestination(position);
@@ -59,6 +62,22 @@ public class Agent : MonoBehaviour, ICommandable
         for (int i = 0; i < selectionMarkers.Length; i++)
         {
             selectionMarkers[i].SetActive(false);
+        }
+    }
+
+    public void MoveToCover(Cover cover)
+    {
+        currentCover = cover;
+        currentCoverPosition = cover.GetCoverPosition();
+        Move(currentCoverPosition.position);
+    }
+
+    public void MoveOutOfCover()
+    {
+        if (currentCover != null)
+        {
+            currentCover.ReturnCoverPosition(currentCoverPosition);
+            currentCover = null;
         }
     }
 }
