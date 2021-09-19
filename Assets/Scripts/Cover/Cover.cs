@@ -17,6 +17,7 @@ public class Cover : MonoBehaviour
         for (int i = 0; i < coverPositions.Length; i++)
         {
             unoccupiedCoverPositions.Enqueue(coverPositions[i]);
+            coverPositions[i].gameObject.SetActive(false);
         }
     }
 
@@ -38,5 +39,24 @@ public class Cover : MonoBehaviour
     {
         unoccupiedCoverPositions.Enqueue(coverPosition);
         occupiedCoverPositions.Remove(coverPosition);
+    }
+
+    public void ShowCoverIcons()
+    {
+        if (UnOccupied)
+        {
+            for (int i = 0; i < coverPositions.Length; i++)
+            {
+                coverPositions[i].gameObject.SetActive(true);
+            }
+        }
+    }
+
+    public void HideCoverIcons()
+    {
+        for (int i = 0; i < coverPositions.Length; i++)
+        {
+            coverPositions[i].gameObject.SetActive(false);
+        }
     }
 }

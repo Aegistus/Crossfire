@@ -5,8 +5,9 @@ using UnityEngine;
 public abstract class Team : MonoBehaviour
 {
     public List<GameObject> teamUnitsGameObjects = new List<GameObject>();
-
     public List<ICommandable> unitsOnTeam = new List<ICommandable>();
+
+    public bool HasUnitsSelected => selectedUnits.Count > 0;
 
     private List<ICommandable> selectedUnits = new List<ICommandable>();
 

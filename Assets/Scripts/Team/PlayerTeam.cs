@@ -17,9 +17,11 @@ public class PlayerTeam : Team
         mainCam = Camera.main;
     }
 
+    Cover currentCoverUnderCursor;
     RaycastHit rayHit;
     private void Update()
     {
+        // left clicks
         if (Input.GetMouseButtonDown(0))
         {
             Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer, QueryTriggerInteraction.Collide);
@@ -35,6 +37,8 @@ public class PlayerTeam : Team
                 DeselectAll();
             }
         }
+
+        // right clicks
         if (Input.GetMouseButtonUp(1))
         {
             // check for cover
@@ -55,6 +59,22 @@ public class PlayerTeam : Team
                     GiveMoveOrder(rayHit.point);
                 }
             }
+        }
+
+        if (HasUnitsSelected)
+        {
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
+            Cover cover = null;
+            if (rayHit.collider != null)
+            {
+                cover = rayHit.collider.GetComponentInParent<Cover>();
+            }
+            if (rayHit.collider == null || cover == null || currentCoverUnderCursor != cover)
+            {
+                currentCoverUnderCursor?.HideCoverIcons();
+            }
+            currentCoverUnderCursor = cover;
+            currentCoverUnderCursor?.ShowCoverIcons();
         }
     }
 }
