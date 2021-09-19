@@ -41,11 +41,14 @@ public class PlayerTeam : Team
                 GiveMoveOrder(rayHit.point);
             }
             Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
-            Cover cover = rayHit.collider.GetComponentInParent<Cover>();
             if (rayHit.collider != null)
             {
-                print("Give Move to Cover Order");
-                GiveMoveToCoverOrder(cover);
+                Cover cover = rayHit.collider.GetComponentInParent<Cover>();
+                if (cover != null)
+                {
+                    print("Give Move to Cover Order");
+                    GiveMoveToCoverOrder(cover);
+                }
             }
         }
     }
