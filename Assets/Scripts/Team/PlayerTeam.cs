@@ -26,6 +26,7 @@ public class PlayerTeam : Team
             ICommandable selected = rayHit.collider?.GetComponentInParent(typeof(ICommandable)) as ICommandable;
             if (selected != null)
             {
+                print("Selecting");
                 SelectCommandable(selected);
             }
             else

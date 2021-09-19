@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using System;
 
-public class Agent : MonoBehaviour, ICommandable
+public class Agent : MonoBehaviour
 {
     public GameObject[] selectionMarkers;
 
