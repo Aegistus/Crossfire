@@ -44,7 +44,6 @@ public class PlayerTeam : Team
                 Cover cover = rayHit.collider.GetComponentInParent<Cover>();
                 if (cover != null)
                 {
-                    print("Give Move to Cover Order");
                     GiveMoveToCoverOrder(cover);
                 }
             }

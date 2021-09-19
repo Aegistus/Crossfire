@@ -6,7 +6,8 @@ public class InCoverIdling : AgentState
 {
     public InCoverIdling(GameObject gameObject) : base(gameObject)
     {
-
+        transitionsTo.Add(new Transition(typeof(Walking), Not(AtDestination)));
+        transitionsTo.Add(new Transition(typeof(Idling), Not(InCover)));
     }
 
     public override void AfterExecution()
@@ -16,7 +17,7 @@ public class InCoverIdling : AgentState
 
     public override void BeforeExecution()
     {
-        Debug.Log("In Cover Idling");
+        Print("In Cover Idling");
     }
 
     public override void DuringExecution()

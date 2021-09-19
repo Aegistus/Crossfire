@@ -6,6 +6,7 @@ using System;
 
 public class Agent : MonoBehaviour
 {
+    public bool debugMode = false;
     public GameObject[] selectionMarkers;
 
     public bool InCover => currentCover != null;

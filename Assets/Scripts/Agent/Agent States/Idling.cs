@@ -8,6 +8,7 @@ public class Idling : AgentState
     public Idling(GameObject gameObject) : base(gameObject)
     {
         transitionsTo.Add(new Transition(typeof(Walking), AtDestination));
+        transitionsTo.Add(new Transition(typeof(InCoverIdling), AtDestination, InCover));
     }
 
     public override void AfterExecution()
@@ -17,7 +18,7 @@ public class Idling : AgentState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Idling");
+        Print("Idling");
     }
 
     public override void DuringExecution()

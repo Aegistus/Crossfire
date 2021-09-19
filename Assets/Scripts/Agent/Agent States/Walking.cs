@@ -16,7 +16,7 @@ public class Walking : AgentState
 
     public override void BeforeExecution()
     {
-        Debug.Log("Walking");
+        Print("Walking");
     }
 
     public override void DuringExecution()

@@ -78,7 +78,6 @@ public class Squad : MonoBehaviour, ICommandable
 
     public void MoveToCover(Cover cover)
     {
-        print("Squad: Moving Agents to Cover");
         for (int i = 0; i < agents.Count; i++)
         {
             agents[i].MoveToCover(cover);
