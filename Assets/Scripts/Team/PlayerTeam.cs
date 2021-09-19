@@ -26,6 +26,7 @@ public class PlayerTeam : Team
             ICommandable selected = rayHit.collider?.GetComponentInParent(typeof(ICommandable)) as ICommandable;
             if (selected != null)
             {
+                DeselectAll();
                 print("Selecting");
                 SelectCommandable(selected);
             }
@@ -36,11 +37,7 @@ public class PlayerTeam : Team
         }
         if (Input.GetMouseButtonUp(1))
         {
-            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, groundLayer);
-            if (rayHit.collider != null)
-            {
-                GiveMoveOrder(rayHit.point);
-            }
+            // check for cover
             Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
             if (rayHit.collider != null)
             {
@@ -49,6 +46,14 @@ public class PlayerTeam : Team
                 {
                     print("Give Move to Cover Order");
                     GiveMoveToCoverOrder(cover);
+                }
+            }
+            else // if no cover, check for ground
+            {
+                Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, groundLayer);
+                if (rayHit.collider != null)
+                {
+                    GiveMoveOrder(rayHit.point);
                 }
             }
         }

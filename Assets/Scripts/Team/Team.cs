@@ -65,13 +65,20 @@ public abstract class Team : MonoBehaviour
 
     public void GiveMoveToCoverOrder(Cover cover)
     {
-        for (int i = 0; i < selectedUnits.Count; i++)
+        if (cover.UnOccupied)
         {
-            if (selectedUnits[i].InCover)
+            for (int i = 0; i < selectedUnits.Count; i++)
             {
-                selectedUnits[i].MoveOutOfCover();
+                if (selectedUnits[i].InCover)
+                {
+                    selectedUnits[i].MoveOutOfCover();
+                }
+                selectedUnits[i].MoveToCover(cover);
             }
-            selectedUnits[i].MoveToCover(cover);
+        }
+        else
+        {
+            print("Cover Occupied");
         }
     }
 }

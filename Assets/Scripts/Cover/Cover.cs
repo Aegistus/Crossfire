@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Cover : MonoBehaviour
 {
     [SerializeField]
     private Transform[] coverPositions;
+
+    public bool UnOccupied => occupiedCoverPositions.Count == 0;
 
     private List<Transform> occupiedCoverPositions = new List<Transform>();
     private Queue<Transform> unoccupiedCoverPositions = new Queue<Transform>();
@@ -21,9 +22,16 @@ public class Cover : MonoBehaviour
 
     public Transform GetCoverPosition()
     {
-        Transform position = unoccupiedCoverPositions.Dequeue();
-        occupiedCoverPositions.Add(position);
-        return position;
+        if (unoccupiedCoverPositions.Count > 0)
+        {
+            Transform position = unoccupiedCoverPositions.Dequeue();
+            occupiedCoverPositions.Add(position);
+            return position;
+        }
+        else
+        {
+            return transform;
+        }
     }
 
     public void ReturnCoverPosition(Transform coverPosition)
