@@ -15,7 +15,7 @@ public abstract class AgentState : State
         navAgent = gameObject.GetComponent<NavMeshAgent>();
     }
 
-    public Func<bool> AtDestination => () => navAgent.velocity.magnitude > 0;
+    public Func<bool> IsMoving => () => navAgent.velocity.magnitude > 0;
     public Func<bool> InCover => () => self.InCover;
 
     protected void Print(string message)

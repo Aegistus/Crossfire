@@ -490,6 +490,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 717533594}
     m_Modifications:
+    - target: {fileID: 9023953762304124004, guid: af0bc0905ea65dc4f9e252097eccc9e7, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9023953762304124005, guid: af0bc0905ea65dc4f9e252097eccc9e7, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -589,6 +593,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 717533594}
     m_Modifications:
+    - target: {fileID: 9023953762304124004, guid: af0bc0905ea65dc4f9e252097eccc9e7, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9023953762304124005, guid: af0bc0905ea65dc4f9e252097eccc9e7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1079,6 +1087,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 717533594}
     m_Modifications:
+    - target: {fileID: 9023953762304124004, guid: af0bc0905ea65dc4f9e252097eccc9e7, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9023953762304124005, guid: af0bc0905ea65dc4f9e252097eccc9e7, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1433,6 +1445,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 717533594}
     m_Modifications:
+    - target: {fileID: 9023953762304124004, guid: af0bc0905ea65dc4f9e252097eccc9e7, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9023953762304124005, guid: af0bc0905ea65dc4f9e252097eccc9e7, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1734,6 +1750,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 717533594}
     m_Modifications:
+    - target: {fileID: 9023953762304124004, guid: af0bc0905ea65dc4f9e252097eccc9e7, type: 3}
+      propertyPath: debugMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9023953762304124005, guid: af0bc0905ea65dc4f9e252097eccc9e7, type: 3}
       propertyPath: m_RootOrder
       value: 4

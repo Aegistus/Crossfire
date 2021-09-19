@@ -28,6 +28,7 @@ public class Agent : MonoBehaviour
         {
             {typeof(Idling), new Idling(gameObject) },
             {typeof(Walking), new Walking(gameObject) },
+            {typeof(InCoverIdling), new InCoverIdling(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
         Move(transform.position);

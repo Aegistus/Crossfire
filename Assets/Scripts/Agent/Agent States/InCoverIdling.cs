@@ -6,7 +6,7 @@ public class InCoverIdling : AgentState
 {
     public InCoverIdling(GameObject gameObject) : base(gameObject)
     {
-        transitionsTo.Add(new Transition(typeof(Walking), Not(AtDestination)));
+        transitionsTo.Add(new Transition(typeof(Walking), IsMoving));
         transitionsTo.Add(new Transition(typeof(Idling), Not(InCover)));
     }
 

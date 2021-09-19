@@ -25,6 +25,7 @@ public class AgentAnimation : MonoBehaviour
         {
             {typeof(Idling), Animator.StringToHash("Idling") },
             {typeof(Walking), Animator.StringToHash("Walking") },
+            {typeof(InCoverIdling), Animator.StringToHash("In Cover Idling") },
         };
     }
 
