@@ -8,6 +8,8 @@ public class AgentAnimation : MonoBehaviour
 {
     public RuntimeAnimatorController defaultController;
 
+    public event Action<AnimEvent> OnAnimationEvent;
+
     Agent agent;
     Animator anim;
     MultiDictionary<Type, int> animStates;
@@ -32,6 +34,11 @@ public class AgentAnimation : MonoBehaviour
             {typeof(Dying), Animator.StringToHash("Dying 03") },
             {typeof(Dying), Animator.StringToHash("Dying 04") },
         };
+    }
+
+    public void CallAnimationEvent(AnimEvent animEvent)
+    {
+        OnAnimationEvent?.Invoke(animEvent);
     }
 
     private void UpdateAnimation(State newState)
