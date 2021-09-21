@@ -16,11 +16,11 @@ public abstract class Team : MonoBehaviour
         for (int i = 0; i < teamUnitsGameObjects.Count; i++)
         {
             unitsOnTeam.Add(teamUnitsGameObjects[i].GetComponent(typeof(ICommandable)) as ICommandable);
-            ICommandable[] children = teamUnitsGameObjects[i].GetComponentsInChildren(typeof(ICommandable)) as ICommandable[];
-            if (children != null && children.Length > 0)
-            {
-                unitsOnTeam.AddRange(children);
-            }
+            //ICommandable[] children = teamUnitsGameObjects[i].GetComponentsInChildren(typeof(ICommandable)) as ICommandable[];
+            //if (children != null && children.Length > 0)
+            //{
+            //    unitsOnTeam.AddRange(children);
+            //}
         }
     }
 
@@ -77,9 +77,16 @@ public abstract class Team : MonoBehaviour
                 selectedUnits[i].MoveToCover(cover);
             }
         }
-        else
+    }
+
+    public void GiveAttackOrder(Squad enemySquad)
+    {
+        if (!unitsOnTeam.Contains(enemySquad))
         {
-            print("Cover Occupied");
+            for (int i = 0; i < selectedUnits.Count; i++)
+            {
+                selectedUnits[i].Attack(enemySquad);
+            }
         }
     }
 }

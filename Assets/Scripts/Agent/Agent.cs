@@ -29,6 +29,8 @@ public class Agent : MonoBehaviour
             {typeof(Idling), new Idling(gameObject) },
             {typeof(Walking), new Walking(gameObject) },
             {typeof(InCoverIdling), new InCoverIdling(gameObject) },
+            {typeof(Dying), new Dying(gameObject) },
+            {typeof(Shooting), new Shooting(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
         Move(transform.position);
@@ -81,5 +83,15 @@ public class Agent : MonoBehaviour
             currentCover.ReturnCoverPosition(currentCoverPosition);
             currentCover = null;
         }
+    }
+
+    public void Kill()
+    {
+        StateMachine.SwitchToNewState(typeof(Dying));
+    }
+
+    public void Shoot()
+    {
+        StateMachine.SwitchToNewState(typeof(Shooting));
     }
 }

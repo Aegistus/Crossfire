@@ -10,4 +10,5 @@ public interface ICommandable
     void Deselect();
     void MoveToCover(Cover cover);
     void MoveOutOfCover();
+    void Attack(Squad target);
 }

@@ -10,7 +10,6 @@ public class Squad : MonoBehaviour, ICommandable
 
     public bool InCover => agents.Find(agent => agent.InCover == true) != null;
     public Vector3 Position { get; private set; }
-    public StateMachine StateMachine { get; private set; } = new StateMachine();
 
     private List<Agent> agents;
 
@@ -18,12 +17,6 @@ public class Squad : MonoBehaviour, ICommandable
     {
         agents = GetComponentsInChildren<Agent>().ToList();
         CentralizePosition();
-        Dictionary<Type, State> states = new Dictionary<Type, State>()
-        {
-            {typeof(SquadStanding), new SquadStanding(gameObject, this) },
-            {typeof(SquadMoving), new SquadMoving(gameObject, this) },
-        };
-        StateMachine.SetStates(states, typeof(SquadStanding));
         for (int i = 0; i < agents.Count; i++)
         {
             agents[i].Deselect();
@@ -89,6 +82,32 @@ public class Squad : MonoBehaviour, ICommandable
         for (int i = 0; i < agents.Count; i++)
         {
             agents[i].MoveOutOfCover();
+        }
+    }
+
+    public void Attack(Squad target)
+    {
+        int[] rolls = Dice.RollD6Multiple(agents.Count);
+        int hits = 0;
+        for (int i = 0; i < rolls.Length; i++)
+        {
+            if (rolls[i] > 3)
+            {
+                hits++;
+            }
+        }
+        for (int i = 0; i < agents.Count; i++)
+        {
+            agents[i].Shoot();
+        }
+        target.Damage(hits);
+    }
+
+    public void Damage(int hits)
+    {
+        for (int i = 0; i < hits && i < agents.Count; i++)
+        {
+            agents[i].Kill();
         }
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using System;
 
 public class PlayerTeam : Team
@@ -41,22 +40,35 @@ public class PlayerTeam : Team
         // right clicks
         if (Input.GetMouseButtonUp(1))
         {
-            // check for cover
-            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
+            // check for enemy squad to attack
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer);
             if (rayHit.collider != null)
             {
-                Cover cover = rayHit.collider.GetComponentInParent<Cover>();
-                if (cover != null)
+                Squad squad = rayHit.collider.GetComponentInParent<Squad>();
+                if (squad != null)
                 {
-                    GiveMoveToCoverOrder(cover);
+                    GiveAttackOrder(squad);
                 }
             }
-            else // if no cover, check for ground
+            else
             {
-                Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, groundLayer);
+                // check for cover
+                Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
                 if (rayHit.collider != null)
                 {
-                    GiveMoveOrder(rayHit.point);
+                    Cover cover = rayHit.collider.GetComponentInParent<Cover>();
+                    if (cover != null)
+                    {
+                        GiveMoveToCoverOrder(cover);
+                    }
+                }
+                else // if no cover, check for ground
+                {
+                    Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, groundLayer);
+                    if (rayHit.collider != null)
+                    {
+                        GiveMoveOrder(rayHit.point);
+                    }
                 }
             }
         }
