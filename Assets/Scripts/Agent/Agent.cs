@@ -9,6 +9,7 @@ public class Agent : MonoBehaviour
     public bool debugMode = false;
     public GameObject[] selectionMarkers;
 
+    public bool IsAlive { get; private set; } = true;
     public bool InCover => currentCover != null;
     public StateMachine StateMachine { get; private set; } = new StateMachine();
 
@@ -88,6 +89,7 @@ public class Agent : MonoBehaviour
     public void Kill()
     {
         StateMachine.SwitchToNewState(typeof(Dying));
+        IsAlive = false;
     }
 
     public void Shoot()

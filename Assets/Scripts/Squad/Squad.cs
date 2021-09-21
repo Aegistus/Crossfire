@@ -109,5 +109,6 @@ public class Squad : MonoBehaviour, ICommandable
         {
             agents[i].Kill();
         }
+        agents.RemoveAll(agent => agent.IsAlive == false);
     }
 }
