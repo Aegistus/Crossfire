@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface ICommandable
 {
-    bool InCover { get; }
+    CoverType Cover { get; }
     void Move(Vector3 position);
     void Select();
     void Deselect();

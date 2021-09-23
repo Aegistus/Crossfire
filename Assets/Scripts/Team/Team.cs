@@ -56,7 +56,7 @@ public abstract class Team : MonoBehaviour
     {
         for (int i = 0; i < selectedUnits.Count; i++)
         {
-            if (selectedUnits[i].InCover)
+            if (selectedUnits[i].Cover == CoverType.HalfCover || selectedUnits[i].Cover == CoverType.FullCover)
             {
                 selectedUnits[i].MoveOutOfCover();
             }
@@ -70,7 +70,7 @@ public abstract class Team : MonoBehaviour
         {
             for (int i = 0; i < selectedUnits.Count; i++)
             {
-                if (selectedUnits[i].InCover)
+                if (selectedUnits[i].Cover == CoverType.HalfCover || selectedUnits[i].Cover == CoverType.FullCover)
                 {
                     selectedUnits[i].MoveOutOfCover();
                 }

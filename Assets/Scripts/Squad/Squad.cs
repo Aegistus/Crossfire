@@ -8,7 +8,7 @@ public class Squad : MonoBehaviour, ICommandable
 {
     public Vector2[] agentPositions;
 
-    public bool InCover => agents.Find(agent => agent.InCover == true) != null;
+    public CoverType Cover => GetCurrentCover();
     public Vector3 Position { get; private set; }
 
     private List<Agent> agents;
@@ -32,6 +32,22 @@ public class Squad : MonoBehaviour, ICommandable
         }
         center /= agents.Count;
         Position = center;
+    }
+
+    private CoverType GetCurrentCover()
+    {
+        if (agents.Find(agent => agent.CoverType == CoverType.FullCover) != null)
+        {
+            return CoverType.FullCover;
+        }
+        else if (agents.Find(agent => agent.CoverType == CoverType.HalfCover) != null)
+        {
+            return CoverType.HalfCover;
+        }
+        else
+        {
+            return CoverType.NoCover;
+        }
     }
 
     public void MoveAgentsIntoFormation()
@@ -105,7 +121,11 @@ public class Squad : MonoBehaviour, ICommandable
         int hits = 0;
         for (int i = 0; i < rolls.Length; i++)
         {
-            if (InCover && rolls[i] > 4)
+            if (Cover == CoverType.FullCover && rolls[i] > 5)
+            {
+                hits++;
+            }
+            else if (Cover == CoverType.HalfCover && rolls[i] > 4)
             {
                 hits++;
             }

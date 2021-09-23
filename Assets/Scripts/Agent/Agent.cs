@@ -10,7 +10,7 @@ public class Agent : MonoBehaviour
     public GameObject[] selectionMarkers;
 
     public bool IsAlive { get; private set; } = true;
-    public bool InCover => currentCover != null;
+    public CoverType CoverType => currentCover == null ? CoverType.NoCover : currentCover.Type;
     public StateMachine StateMachine { get; private set; } = new StateMachine();
     public Weapon Weapon { get; private set; }
 

@@ -5,8 +5,12 @@ using UnityEngine;
 public class Cover : MonoBehaviour
 {
     [SerializeField]
+    private CoverType type;
+
+    [SerializeField]
     private Transform[] coverPositions;
 
+    public CoverType Type { get => type; }
     public bool UnOccupied => occupiedCoverPositions.Count == 0;
 
     private List<Transform> occupiedCoverPositions = new List<Transform>();

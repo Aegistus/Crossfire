@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e641653d2b6eb164288a75b4a72277a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
   coverPositions:
   - {fileID: 3368054803117577583}
   - {fileID: 3368054803018936818}
