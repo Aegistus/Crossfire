@@ -12,6 +12,7 @@ public class Agent : MonoBehaviour
     public bool IsAlive { get; private set; } = true;
     public bool InCover => currentCover != null;
     public StateMachine StateMachine { get; private set; } = new StateMachine();
+    public Weapon Weapon { get; private set; }
 
     private NavMeshAgent navAgent;
 
@@ -36,6 +37,7 @@ public class Agent : MonoBehaviour
         StateMachine.SetStates(states, typeof(Idling));
         Move(transform.position);
         Deselect();
+        Weapon = GetComponentInChildren<Weapon>();
     }
 
     private void Update()

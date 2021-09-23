@@ -87,24 +87,33 @@ public class Squad : MonoBehaviour, ICommandable
 
     public void Attack(Squad target)
     {
-        int[] rolls = Dice.RollD6Multiple(agents.Count);
-        int hits = 0;
-        for (int i = 0; i < rolls.Length; i++)
+        int diceNum = 0;
+        for (int i = 0; i < agents.Count; i++)
         {
-            if (rolls[i] > 3)
-            {
-                hits++;
-            }
+            diceNum += agents[i].Weapon.Stats.hitDice;
         }
+        int[] rolls = Dice.RollD6Multiple(diceNum);
         for (int i = 0; i < agents.Count; i++)
         {
             agents[i].Shoot();
         }
-        target.Damage(hits);
+        target.ReceiveDamage(rolls);
     }
 
-    public void Damage(int hits)
+    public void ReceiveDamage(int[] rolls)
     {
+        int hits = 0;
+        for (int i = 0; i < rolls.Length; i++)
+        {
+            if (InCover && rolls[i] > 4)
+            {
+                hits++;
+            }
+            else if (rolls[i] > 3)
+            {
+                hits++;
+            }
+        }
         for (int i = 0; i < hits && i < agents.Count; i++)
         {
             agents[i].Kill();
