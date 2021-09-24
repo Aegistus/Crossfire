@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class OrientWeapon : MonoBehaviour
 {
-    public Transform otherHand;
+    public Transform weaponAnchor;
 
     private void Update()
     {
-        transform.LookAt(otherHand);
+        transform?.LookAt(weaponAnchor);
     }
 }

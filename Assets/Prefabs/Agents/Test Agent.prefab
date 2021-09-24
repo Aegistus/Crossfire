@@ -3270,19 +3270,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2838355075412699067, guid: f189243ae059e6c44a79876fc71629bc, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6837836
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2838355075412699067, guid: f189243ae059e6c44a79876fc71629bc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.28516585
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2838355075412699067, guid: f189243ae059e6c44a79876fc71629bc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.2651856
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2838355075412699067, guid: f189243ae059e6c44a79876fc71629bc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.6170876
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2838355075412699067, guid: f189243ae059e6c44a79876fc71629bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3302,6 +3302,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8072784184645488793, guid: f189243ae059e6c44a79876fc71629bc, type: 3}
       propertyPath: otherHand
+      value: 
+      objectReference: {fileID: 7365904114436351000}
+    - target: {fileID: 8072784184645488793, guid: f189243ae059e6c44a79876fc71629bc, type: 3}
+      propertyPath: weaponAnchor
       value: 
       objectReference: {fileID: 7365904114436351000}
     m_RemovedComponents: []
