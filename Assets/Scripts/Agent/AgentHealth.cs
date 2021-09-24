@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class AgentHealth 
 {
-    public bool IsAlive { get; set; }
+    public bool IsAlive { get; set; } = true;
 }

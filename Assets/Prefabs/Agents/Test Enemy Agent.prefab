@@ -134,6 +134,8 @@ MonoBehaviour:
   debugMode: 0
   selectionMarkers:
   - {fileID: 3256760837658670000}
+  pinMarker: {fileID: 1890126330051847922}
+  suppressionMarker: {fileID: 4335150401665517133}
 --- !u!195 &3256760839415464496
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3304,6 +3306,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7218b9ff0a53b024eb7eb8507669354d, type: 3}
+--- !u!1 &1890126330051847922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2657325162406165276, guid: 7218b9ff0a53b024eb7eb8507669354d, type: 3}
+  m_PrefabInstance: {fileID: 4529395020405890542}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4617078933645966562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9135705870731010316, guid: 7218b9ff0a53b024eb7eb8507669354d, type: 3}
@@ -3448,6 +3455,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a0ad748c495384428c073e398fe585e, type: 3}
+--- !u!1 &4335150401665517133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5445824802556050715, guid: 5a0ad748c495384428c073e398fe585e, type: 3}
+  m_PrefabInstance: {fileID: 8627481386597956438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1199536075538627824 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7430766937254774694, guid: 5a0ad748c495384428c073e398fe585e, type: 3}

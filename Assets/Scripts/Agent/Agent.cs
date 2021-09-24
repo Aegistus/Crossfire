@@ -8,12 +8,15 @@ public class Agent : MonoBehaviour
 {
     public bool debugMode = false;
     public GameObject[] selectionMarkers;
+    public GameObject pinMarker;
+    public GameObject suppressionMarker;
 
     public StateMachine StateMachine { get; private set; } = new StateMachine();
     public AgentMovement Movement { get; private set; }
     public AgentHealth Health { get; private set; }
     public AgentSelection Selection { get; private set; }
     public AgentCover Cover { get; private set; }
+    public AgentEffects Effects { get; private set; }
     public Weapon Weapon { get; private set; }
 
     private void Awake()
@@ -22,6 +25,7 @@ public class Agent : MonoBehaviour
         Health = new AgentHealth();
         Selection = new AgentSelection(selectionMarkers);
         Cover = new AgentCover();
+        Effects = new AgentEffects(pinMarker, suppressionMarker);
     }
 
     private void Start()
@@ -35,9 +39,12 @@ public class Agent : MonoBehaviour
             {typeof(Shooting), new Shooting(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
+        Weapon = GetComponentInChildren<Weapon>();
+
         Movement.SetDestination(transform.position);
         Selection.Deselect();
-        Weapon = GetComponentInChildren<Weapon>();
+        Effects.HidePinMarker();
+        Effects.HideSuppressionMarker();
     }
 
     private void Update()
