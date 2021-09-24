@@ -9,19 +9,19 @@ public class Agent : MonoBehaviour
     public bool debugMode = false;
     public GameObject[] selectionMarkers;
 
-    public bool IsAlive { get; private set; } = true;
-    public CoverType CoverType => currentCover == null ? CoverType.NoCover : currentCover.Type;
     public StateMachine StateMachine { get; private set; } = new StateMachine();
+    public AgentMovement Movement { get; private set; }
+    public AgentHealth Health { get; private set; }
+    public AgentSelection Selection { get; private set; }
+    public AgentCover Cover { get; private set; }
     public Weapon Weapon { get; private set; }
-
-    private NavMeshAgent navAgent;
-
-    private Cover currentCover;
-    private Transform currentCoverPosition;
 
     private void Awake()
     {
-        navAgent = GetComponent<NavMeshAgent>();
+        Movement = new AgentMovement(gameObject, transform);
+        Health = new AgentHealth();
+        Selection = new AgentSelection(selectionMarkers);
+        Cover = new AgentCover();
     }
 
     private void Start()
@@ -35,63 +35,21 @@ public class Agent : MonoBehaviour
             {typeof(Shooting), new Shooting(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
-        Move(transform.position);
-        Deselect();
+        Movement.SetDestination(transform.position);
+        Selection.Deselect();
         Weapon = GetComponentInChildren<Weapon>();
     }
 
     private void Update()
     {
         StateMachine.ExecuteState();
-
-        // make agent stop moving when arrived
-        if (transform.position != navAgent.destination && Vector3.Distance(transform.position, navAgent.destination) <= .1f)
-        {
-            Move(transform.position);
-        }
-    }
-
-    public void Move(Vector3 position)
-    {
-        navAgent.SetDestination(position);
-    }
-
-    public void Select()
-    {
-        for (int i = 0; i < selectionMarkers.Length; i++)
-        {
-            selectionMarkers[i].SetActive(true);
-        }
-    }
-
-    public void Deselect()
-    {
-        for (int i = 0; i < selectionMarkers.Length; i++)
-        {
-            selectionMarkers[i].SetActive(false);
-        }
-    }
-
-    public void MoveToCover(Cover cover)
-    {
-        currentCover = cover;
-        currentCoverPosition = cover.GetCoverPosition();
-        Move(currentCoverPosition.position);
-    }
-
-    public void MoveOutOfCover()
-    {
-        if (currentCover != null)
-        {
-            currentCover.ReturnCoverPosition(currentCoverPosition);
-            currentCover = null;
-        }
+        Movement.StopIfAtDestination();
     }
 
     public void Kill()
     {
         StateMachine.SwitchToNewState(typeof(Dying));
-        IsAlive = false;
+        Health.IsAlive = false;
     }
 
     public void Shoot()

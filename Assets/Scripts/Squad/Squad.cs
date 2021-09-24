@@ -19,7 +19,7 @@ public class Squad : MonoBehaviour, ICommandable
         CentralizePosition();
         for (int i = 0; i < agents.Count; i++)
         {
-            agents[i].Deselect();
+            agents[i].Selection.Deselect();
         }
     }
 
@@ -36,11 +36,11 @@ public class Squad : MonoBehaviour, ICommandable
 
     private CoverType GetCurrentCover()
     {
-        if (agents.Find(agent => agent.CoverType == CoverType.FullCover) != null)
+        if (agents.Find(agent => agent.Cover.CoverType == CoverType.FullCover) != null)
         {
             return CoverType.FullCover;
         }
-        else if (agents.Find(agent => agent.CoverType == CoverType.HalfCover) != null)
+        else if (agents.Find(agent => agent.Cover.CoverType == CoverType.HalfCover) != null)
         {
             return CoverType.HalfCover;
         }
@@ -56,7 +56,7 @@ public class Squad : MonoBehaviour, ICommandable
         {
             if (i < agentPositions.Length)
             {
-                agents[i].Move(new Vector3(Position.x + agentPositions[i].x, Position.y, Position.z + agentPositions[i].y));
+                agents[i].Movement.SetDestination(new Vector3(Position.x + agentPositions[i].x, Position.y, Position.z + agentPositions[i].y));
             }
         }
     }
@@ -65,7 +65,7 @@ public class Squad : MonoBehaviour, ICommandable
     {
         for (int i = 0; i < agents.Count; i++)
         {
-            agents[i].Select();
+            agents[i].Selection.Select();
         }
     }
 
@@ -73,7 +73,7 @@ public class Squad : MonoBehaviour, ICommandable
     {
         for (int i = 0; i < agents.Count; i++)
         {
-            agents[i].Deselect();
+            agents[i].Selection.Deselect();
         }
     }
 
@@ -81,7 +81,7 @@ public class Squad : MonoBehaviour, ICommandable
     {
         for (int i = 0; i < agents.Count; i++)
         {
-            agents[i].Move(new Vector3(destination.x + agentPositions[i].x, destination.y, destination.z + agentPositions[i].y));
+            agents[i].Movement.SetDestination(new Vector3(destination.x + agentPositions[i].x, destination.y, destination.z + agentPositions[i].y));
         }
     }
 
@@ -89,7 +89,8 @@ public class Squad : MonoBehaviour, ICommandable
     {
         for (int i = 0; i < agents.Count; i++)
         {
-            agents[i].MoveToCover(cover);
+            agents[i].Cover.EnterCover(cover);
+            agents[i].Movement.SetDestination(agents[i].Cover.Position);
         }
     }
 
@@ -97,7 +98,7 @@ public class Squad : MonoBehaviour, ICommandable
     {
         for (int i = 0; i < agents.Count; i++)
         {
-            agents[i].MoveOutOfCover();
+            agents[i].Cover.ExitCover();
         }
     }
 
@@ -138,6 +139,6 @@ public class Squad : MonoBehaviour, ICommandable
         {
             agents[i].Kill();
         }
-        agents.RemoveAll(agent => agent.IsAlive == false);
+        agents.RemoveAll(agent => agent.Health.IsAlive == false);
     }
 }

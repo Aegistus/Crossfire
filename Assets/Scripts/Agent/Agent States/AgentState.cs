@@ -16,7 +16,7 @@ public abstract class AgentState : State
     }
 
     public Func<bool> IsMoving => () => navAgent.velocity.magnitude > 0;
-    public Func<bool> InCover => () => self.CoverType == CoverType.HalfCover || self.CoverType == CoverType.FullCover;
+    public Func<bool> InCover => () => self.Cover.CoverType == CoverType.HalfCover || self.Cover.CoverType == CoverType.FullCover;
 
     protected void Print(string message)
     {
