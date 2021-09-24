@@ -83,6 +83,7 @@ public abstract class Team : MonoBehaviour
     {
         if (!unitsOnTeam.Contains(enemySquad))
         {
+            enemySquad.CentralizePosition();
             for (int i = 0; i < selectedUnits.Count; i++)
             {
                 selectedUnits[i].Attack(enemySquad);

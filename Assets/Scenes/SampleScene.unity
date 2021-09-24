@@ -4714,7 +4714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineOfSightLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 128
 --- !u!4 &1608423883
 Transform:
   m_ObjectHideFlags: 0

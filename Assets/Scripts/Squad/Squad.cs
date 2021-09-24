@@ -14,6 +14,7 @@ public class Squad : MonoBehaviour, ICommandable
     public Vector3 Position { get; private set; }
 
     private List<Agent> agents;
+    private LineOfSight los;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class Squad : MonoBehaviour, ICommandable
         {
             agents[i].Selection.Deselect();
         }
+        los = LineOfSight.Instance;
     }
 
     public void CentralizePosition()
@@ -33,6 +35,7 @@ public class Squad : MonoBehaviour, ICommandable
             center += agents[i].transform.position;
         }
         center /= agents.Count;
+        center.y += 2;
         Position = center;
     }
 
@@ -122,17 +125,26 @@ public class Squad : MonoBehaviour, ICommandable
         {
             return;
         }
-        int diceNum = 0;
-        for (int i = 0; i < agents.Count; i++)
+        CentralizePosition();
+        if (los.HasLineOfSight(Position, target.Position, 100f))
         {
-            diceNum += agents[i].Weapon.Stats.hitDice;
+            print("Has LOS");
+            int diceNum = 0;
+            for (int i = 0; i < agents.Count; i++)
+            {
+                diceNum += agents[i].Weapon.Stats.hitDice;
+            }
+            int[] rolls = Dice.RollD6Multiple(diceNum);
+            for (int i = 0; i < agents.Count; i++)
+            {
+                agents[i].Shoot();
+            }
+            target.ReceiveDamage(rolls);
         }
-        int[] rolls = Dice.RollD6Multiple(diceNum);
-        for (int i = 0; i < agents.Count; i++)
+        else
         {
-            agents[i].Shoot();
+            print("No LOS");
         }
-        target.ReceiveDamage(rolls);
     }
 
     public void ReceiveDamage(int[] rolls)
