@@ -25,7 +25,7 @@ public class Squad : MonoBehaviour, ICommandable
         }
     }
 
-    private void CentralizePosition()
+    public void CentralizePosition()
     {
         Vector3 center = Vector3.zero;
         for (int i = 0; i < agents.Count; i++)
