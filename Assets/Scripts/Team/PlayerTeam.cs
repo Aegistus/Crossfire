@@ -28,7 +28,6 @@ public class PlayerTeam : Team
             if (selected != null)
             {
                 DeselectAll();
-                print("Selecting");
                 SelectCommandable(selected);
             }
             else
@@ -47,7 +46,7 @@ public class PlayerTeam : Team
                 Squad squad = rayHit.collider.GetComponentInParent<Squad>();
                 if (squad != null)
                 {
-                    GiveAttackOrder(squad);
+                    GiveAttackOrderOnTarget(squad);
                 }
             }
             else

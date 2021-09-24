@@ -171,10 +171,9 @@ public class Squad : MonoBehaviour, ICommandable
 
     private void PinSquad()
     {
-        if (!IsPinned)
+        if (!IsPinned && !IsSuppressed)
         {
             IsPinned = true;
-            print(agents.Count);
             for (int i = 0; i < agents.Count; i++)
             {
                 agents[i].Effects.ShowPinMarker();
@@ -186,8 +185,16 @@ public class Squad : MonoBehaviour, ICommandable
     {
         if (!IsSuppressed)
         {
+            // Unpin to Prevent Double Markers
+            if (IsPinned)
+            {
+                IsPinned = false;
+                for (int i = 0; i < agents.Count; i++)
+                {
+                    agents[i].Effects.HidePinMarker();
+                }
+            }
             IsSuppressed = true;
-            print(agents.Count);
             for (int i = 0; i < agents.Count; i++)
             {
                 agents[i].Effects.ShowSuppressionMarker();

@@ -57,6 +57,9 @@ public class Agent : MonoBehaviour
     {
         StateMachine.SwitchToNewState(typeof(Dying));
         Health.IsAlive = false;
+        Effects.HidePinMarker();
+        Effects.HideSuppressionMarker();
+        Selection.Deselect();
     }
 
     public void Shoot()

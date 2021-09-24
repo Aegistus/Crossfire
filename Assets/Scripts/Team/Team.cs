@@ -79,7 +79,7 @@ public abstract class Team : MonoBehaviour
         }
     }
 
-    public void GiveAttackOrder(Squad enemySquad)
+    public void GiveAttackOrderOnTarget(Squad enemySquad)
     {
         if (!unitsOnTeam.Contains(enemySquad))
         {
