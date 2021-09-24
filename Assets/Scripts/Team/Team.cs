@@ -5,17 +5,17 @@ using UnityEngine;
 public abstract class Team : MonoBehaviour
 {
     public List<GameObject> teamUnitsGameObjects = new List<GameObject>();
-    public List<ICommandable> unitsOnTeam = new List<ICommandable>();
+    public List<Squad> unitsOnTeam = new List<Squad>();
 
     public bool HasUnitsSelected => selectedUnits.Count > 0;
 
-    private List<ICommandable> selectedUnits = new List<ICommandable>();
+    private List<Squad> selectedUnits = new List<Squad>();
 
     private void Awake()
     {
         for (int i = 0; i < teamUnitsGameObjects.Count; i++)
         {
-            unitsOnTeam.Add(teamUnitsGameObjects[i].GetComponent(typeof(ICommandable)) as ICommandable);
+            unitsOnTeam.Add(teamUnitsGameObjects[i].GetComponent<Squad>());
             //ICommandable[] children = teamUnitsGameObjects[i].GetComponentsInChildren(typeof(ICommandable)) as ICommandable[];
             //if (children != null && children.Length > 0)
             //{
@@ -24,11 +24,11 @@ public abstract class Team : MonoBehaviour
         }
     }
 
-    public void SelectCommandable(ICommandable toSelect)
+    public void SelectCommandable(Squad toSelect)
     {
         if (unitsOnTeam.Contains(toSelect))
         {
-            toSelect.Select();
+            toSelect.Selection.Select();
             selectedUnits.Add(toSelect);
         }
         else
@@ -37,9 +37,9 @@ public abstract class Team : MonoBehaviour
         }
     }
 
-    public void DeselectCommandable(ICommandable toDeselect)
+    public void DeselectCommandable(Squad toDeselect)
     {
-        toDeselect.Deselect();
+        toDeselect.Selection.Deselect();
         selectedUnits.Remove(toDeselect);
     }
 
@@ -47,7 +47,7 @@ public abstract class Team : MonoBehaviour
     {
         for (int i = 0; i < selectedUnits.Count; i++)
         {
-            selectedUnits[i].Deselect();
+            selectedUnits[i].Selection.Deselect();
         }
         selectedUnits.Clear();
     }
@@ -58,9 +58,9 @@ public abstract class Team : MonoBehaviour
         {
             if (selectedUnits[i].Cover == CoverType.HalfCover || selectedUnits[i].Cover == CoverType.FullCover)
             {
-                selectedUnits[i].MoveOutOfCover();
+                selectedUnits[i].Movement.MoveOutOfCover();
             }
-            selectedUnits[i].Move(position);
+            selectedUnits[i].Movement.Move(position);
         }
     }
 
@@ -72,9 +72,9 @@ public abstract class Team : MonoBehaviour
             {
                 if (selectedUnits[i].Cover == CoverType.HalfCover || selectedUnits[i].Cover == CoverType.FullCover)
                 {
-                    selectedUnits[i].MoveOutOfCover();
+                    selectedUnits[i].Movement.MoveOutOfCover();
                 }
-                selectedUnits[i].MoveToCover(cover);
+                selectedUnits[i].Movement.MoveToCover(cover);
             }
         }
     }
@@ -83,10 +83,10 @@ public abstract class Team : MonoBehaviour
     {
         if (!unitsOnTeam.Contains(enemySquad))
         {
-            enemySquad.CentralizePosition();
+            enemySquad.Movement.CentralizePosition();
             for (int i = 0; i < selectedUnits.Count; i++)
             {
-                selectedUnits[i].Attack(enemySquad);
+                selectedUnits[i].Combat.Attack(enemySquad);
             }
         }
     }

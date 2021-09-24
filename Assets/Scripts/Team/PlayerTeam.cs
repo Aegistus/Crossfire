@@ -24,7 +24,7 @@ public class PlayerTeam : Team
         if (Input.GetMouseButtonDown(0))
         {
             Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer, QueryTriggerInteraction.Collide);
-            ICommandable selected = rayHit.collider?.GetComponentInParent(typeof(ICommandable)) as ICommandable;
+            Squad selected = rayHit.collider?.GetComponentInParent<Squad>();
             if (selected != null)
             {
                 DeselectAll();

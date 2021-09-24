@@ -29,12 +29,10 @@ public class LineOfSight : MonoBehaviour
         {
             Vector3 heading = (target - origin).normalized;
             int hitNumber = Physics.RaycastNonAlloc(origin, heading, hits, lineOfSightLayers);
-            print("Hit Count: " + hits.Length);
             for (int i = 0; i < hitNumber; i++)
             {
                 if (hits[i].distance < distance)
                 {
-                    print("Hit: " + hits[i].collider.gameObject.name);
                     return false;
                 }
             }
