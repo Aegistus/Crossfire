@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1012622959350949834}
   - component: {fileID: 1012622959350949876}
   - component: {fileID: 1012622959350949877}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Kar 98k
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bcae13842a228d498882032fa65a48d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherHand: {fileID: 0}
+  weaponAnchor: {fileID: 0}
 --- !u!1 &2769852166847375704
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 2767194384522393992}
   - component: {fileID: 2738716804689029492}
   - component: {fileID: 2748840029481347090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Wep_German_Scope_Short_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 2767184053760577004}
   - component: {fileID: 2739164864336925556}
   - component: {fileID: 2747815074105613504}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Wep_American_Rifle_01_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 2772235643992460406}
   - component: {fileID: 2738428419173348408}
   - component: {fileID: 2748339010056493858}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Wep_American_Rifle_01_Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 2767106076589912734}
   - component: {fileID: 2742298969133164862}
   - component: {fileID: 2748738580842221224}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Wep_German_Bayonet_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 2738680431742523838}
   - component: {fileID: 2748498045938992176}
   - component: {fileID: 2778747846862039190}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   - component: {fileID: 2767134242437300238}
   - component: {fileID: 2738593390885946496}
   - component: {fileID: 2748186274958573914}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_Wep_German_Scope_Long_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
