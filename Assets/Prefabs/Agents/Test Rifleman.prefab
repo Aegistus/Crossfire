@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 9023953762304124007}
   - component: {fileID: 2332235594361454176}
   m_Layer: 6
-  m_Name: Test Agent
+  m_Name: Test Rifleman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,7 +612,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9023953762304124058}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5436974, y: 2.0200047, z: 3.4788322}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9021927133083794368}

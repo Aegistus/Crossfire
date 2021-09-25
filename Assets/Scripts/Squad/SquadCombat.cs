@@ -27,7 +27,10 @@ public class SquadCombat
             int diceNum = 0;
             for (int i = 0; i < Agents.Count; i++)
             {
-                diceNum += Agents[i].Weapon.Stats.hitDice;
+                if (Agents[i].Weapon != null)
+                {
+                    diceNum += Agents[i].Weapon.Stats.hitDice;
+                }
             }
             int[] rolls = Dice.RollD6Multiple(diceNum);
             for (int i = 0; i < Agents.Count; i++)
