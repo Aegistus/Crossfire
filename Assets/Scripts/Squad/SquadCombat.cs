@@ -55,7 +55,7 @@ public class SquadCombat
             {
                 hits++;
             }
-            else if (rolls[i] > 3)
+            else if (rolls[i] > 5)
             {
                 hits++;
             }
@@ -73,6 +73,10 @@ public class SquadCombat
         if (hits > 3)
         {
             squad.Effects.Suppress();
+        }
+        if (hits == 0)
+        {
+            Initiative.PassInitiative();
         }
     }
 }

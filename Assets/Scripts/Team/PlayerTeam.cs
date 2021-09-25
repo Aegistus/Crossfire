@@ -13,6 +13,7 @@ public class PlayerTeam : Team
 
     private void Start()
     {
+        Initiative.StartGame();
         mainCam = Camera.main;
     }
 
@@ -28,7 +29,7 @@ public class PlayerTeam : Team
             if (selected != null)
             {
                 DeselectAll();
-                SelectCommandable(selected);
+                SelectSquad(selected);
             }
             else
             {
