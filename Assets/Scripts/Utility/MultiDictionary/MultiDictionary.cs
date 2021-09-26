@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class MultiDictionary<TKey, TValue> : IEnumerable
 {
     private Dictionary<TKey, List<TValue>> dictionary = new Dictionary<TKey, List<TValue>>();
-    readonly Random random = new Random();
+    readonly static Random random = new Random();
 
     public TValue this[TKey key]
     {
