@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SquadMovement
 {
+    public bool IsMoving => Agents.Find(agent => agent.StateMachine.CurrentState.GetType() == typeof(Walking)) != null;
     public Vector3 Position { get; private set; }
 
     Squad squad;
@@ -73,6 +74,14 @@ public class SquadMovement
         for (int i = 0; i < Agents.Count; i++)
         {
             Agents[i].Cover.ExitCover();
+        }
+    }
+
+    public void Stop()
+    {
+        for (int i = 0; i < Agents.Count; i++)
+        {
+            Agents[i].Movement.Stop();
         }
     }
 }

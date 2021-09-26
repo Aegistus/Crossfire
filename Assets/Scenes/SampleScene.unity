@@ -4749,6 +4749,7 @@ MonoBehaviour:
   - {fileID: 717533595}
   - {fileID: 1210100892}
   - {fileID: 1391516754}
+  - {fileID: 2031291298}
   selectablesLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -6840,7 +6841,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f517eed32d8d1140bb1d66c5a6ca6a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPositions: []
+  agentPositions:
+  - {x: 0, y: 0}
+  - {x: 1, y: -1}
+  - {x: -1, y: -1}
 --- !u!1001 &2088860042
 PrefabInstance:
   m_ObjectHideFlags: 0

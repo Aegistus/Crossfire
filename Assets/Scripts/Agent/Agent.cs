@@ -60,6 +60,7 @@ public class Agent : MonoBehaviour
         Effects.HidePinMarker();
         Effects.HideSuppressionMarker();
         Selection.Deselect();
+        Movement.Stop();
     }
 
     public void Shoot()

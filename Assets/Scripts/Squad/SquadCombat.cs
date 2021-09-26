@@ -9,6 +9,8 @@ public class SquadCombat
     Squad squad;
     List<Agent> Agents => squad.Agents;
 
+    Squad movingEnemySquad;
+
     public SquadCombat(Squad squad, LineOfSight los)
     {
         this.squad = squad;
@@ -37,7 +39,11 @@ public class SquadCombat
             {
                 Agents[i].Shoot();
             }
-            target.Combat.ReceiveDamage(rolls);
+            bool attackSuccessful = target.Combat.ReceiveDamage(rolls);
+            if (!attackSuccessful)
+            {
+                squad.InitiativeFailure();
+            }
         }
         else
         {
@@ -45,7 +51,12 @@ public class SquadCombat
         }
     }
 
-    public void ReceiveDamage(int[] rolls)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="rolls"></param>
+    /// <returns> Returns false if no rolls are hits, returns true if at least one roll is a hit. </returns>
+    public bool ReceiveDamage(int[] rolls)
     {
         int hits = 0;
         for (int i = 0; i < rolls.Length; i++)
@@ -68,7 +79,6 @@ public class SquadCombat
         {
             Agents[i].Kill();
         }
-        Agents.RemoveAll(agent => agent.Health.IsAlive == false);
         if (hits > 1)
         {
             squad.Effects.Pin();
@@ -77,9 +87,31 @@ public class SquadCombat
         {
             squad.Effects.Suppress();
         }
+        Agents.RemoveAll(agent => agent.Health.IsAlive == false);
         if (hits == 0)
         {
-            Initiative.PassInitiative();
+            return false;
+        }
+        return true;
+    }
+
+    public void UpdateMovingSquads(Squad movingEnemySquad)
+    {
+        Debug.Log("Test 2");
+        this.movingEnemySquad = movingEnemySquad;
+    }
+
+    public void CheckForReactiveFire()
+    {
+        if (movingEnemySquad != null)
+        {
+            if (Vector3.Distance(movingEnemySquad.Movement.Position, squad.Movement.Position) < 20f
+                && los.HasLineOfSight(squad.Movement.Position, movingEnemySquad.Movement.Position, 20f))
+            {
+                Attack(movingEnemySquad);
+                movingEnemySquad = null;
+            }
         }
     }
+
 }

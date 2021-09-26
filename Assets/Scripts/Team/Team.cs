@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class Team : MonoBehaviour
 {
     public List<Squad> unitsOnTeam = new List<Squad>();
+
+    public static event Action<Squad> OnOrderMove;
 
     public bool HasUnitsSelected => selectedUnits.Count > 0;
 
@@ -13,6 +16,31 @@ public abstract class Team : MonoBehaviour
     private void Awake()
     {
         Initiative.AddTeam(this);
+        OnOrderMove += CheckReactiveFire;
+        for (int i = 0; i < unitsOnTeam.Count; i++)
+        {
+            unitsOnTeam[i].OnSquadInitiativeFailure += GiveUpInitiative;
+        }
+    }
+
+    private void GiveUpInitiative()
+    {
+        if (Initiative.TeamWithInitiative == this)
+        {
+            Initiative.PassInitiative();
+        }
+    }
+
+    private void CheckReactiveFire(Squad movingSquad)
+    {
+        if (Initiative.TeamWithInitiative != this)
+        {
+            print("Test 1");
+            for (int i = 0; i < unitsOnTeam.Count; i++)
+            {
+                unitsOnTeam[i].Combat.UpdateMovingSquads(movingSquad);
+            }
+        }
     }
 
     public void SelectSquad(Squad toSelect)
@@ -63,6 +91,7 @@ public abstract class Team : MonoBehaviour
             }
             selectedUnits[i].Movement.Move(position);
         }
+        OnOrderMove?.Invoke(selectedUnits[0]);
     }
 
     public void GiveMoveToCoverOrder(Cover cover)
@@ -83,6 +112,7 @@ public abstract class Team : MonoBehaviour
                 selectedUnits[i].Movement.MoveToCover(cover);
             }
         }
+        OnOrderMove?.Invoke(selectedUnits[0]);
     }
 
     public void GiveAttackOrderOnTarget(Squad enemySquad)

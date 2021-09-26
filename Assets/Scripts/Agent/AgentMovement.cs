@@ -24,7 +24,12 @@ public class AgentMovement
         // make agent stop moving when at destination
         if (transform.position != navAgent.destination && Vector3.Distance(transform.position, navAgent.destination) <= .1f)
         {
-            SetDestination(transform.position);
+            Stop();
         }
+    }
+
+    public void Stop()
+    {
+        navAgent.isStopped = true;
     }
 }

@@ -9,6 +9,8 @@ public class Squad : MonoBehaviour
     [SerializeField]
     private Vector2[] agentPositions;
 
+    public event Action OnSquadInitiativeFailure;
+
     public SquadSelection Selection { get; private set; }
     public SquadMovement Movement { get; private set; }
     public SquadCombat Combat { get; private set; }
@@ -50,6 +52,20 @@ public class Squad : MonoBehaviour
         {
             return CoverType.NoCover;
         }
+    }
+
+    private void Update()
+    {
+        if (Movement.IsMoving)
+        {
+            Movement.CentralizePosition();
+        }
+        Combat.CheckForReactiveFire();
+    }
+
+    public void InitiativeFailure()
+    {
+        OnSquadInitiativeFailure?.Invoke();
     }
 
 }

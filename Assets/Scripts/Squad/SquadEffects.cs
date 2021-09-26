@@ -20,10 +20,12 @@ public class SquadEffects
         if (!IsPinned && !IsSuppressed)
         {
             IsPinned = true;
+            Debug.Log("Pinned");
             for (int i = 0; i < Agents.Count; i++)
             {
                 Agents[i].Effects.ShowPinMarker();
             }
+            squad.Movement.Stop();
         }
     }
 
@@ -37,10 +39,13 @@ public class SquadEffects
                 UnPin();
             }
             IsSuppressed = true;
+            Debug.Log("Suppressed");
             for (int i = 0; i < Agents.Count; i++)
             {
                 Agents[i].Effects.ShowSuppressionMarker();
             }
+            squad.Movement.Stop();
+            squad.InitiativeFailure();
         }
     }
 
