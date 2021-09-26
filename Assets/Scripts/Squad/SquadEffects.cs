@@ -45,8 +45,8 @@ public class SquadEffects
                 Agents[i].Effects.ShowSuppressionMarker();
             }
             squad.Movement.Stop();
-            squad.InitiativeFailure();
         }
+        squad.InitiativeFailure();
     }
 
     private void UnPin()

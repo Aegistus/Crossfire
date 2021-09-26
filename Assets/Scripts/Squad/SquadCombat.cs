@@ -97,7 +97,6 @@ public class SquadCombat
 
     public void UpdateMovingSquads(Squad movingEnemySquad)
     {
-        Debug.Log("Test 2");
         this.movingEnemySquad = movingEnemySquad;
     }
 

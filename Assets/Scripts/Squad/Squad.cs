@@ -36,6 +36,7 @@ public class Squad : MonoBehaviour
         {
             Agents[i].Selection.Deselect();
         }
+        StartCoroutine(ReactiveFireCheck());
     }
 
     private CoverType GetCurrentCover()
@@ -60,7 +61,15 @@ public class Squad : MonoBehaviour
         {
             Movement.CentralizePosition();
         }
-        Combat.CheckForReactiveFire();
+    }
+
+    private IEnumerator ReactiveFireCheck()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            Combat.CheckForReactiveFire();
+        }
     }
 
     public void InitiativeFailure()

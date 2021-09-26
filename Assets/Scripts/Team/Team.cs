@@ -35,7 +35,6 @@ public abstract class Team : MonoBehaviour
     {
         if (Initiative.TeamWithInitiative != this)
         {
-            print("Test 1");
             for (int i = 0; i < unitsOnTeam.Count; i++)
             {
                 unitsOnTeam[i].Combat.UpdateMovingSquads(movingSquad);
