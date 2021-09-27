@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4910875979500239573}
   - component: {fileID: 4910875979500239572}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: German Rifle Squad
   m_TagString: Untagged
   m_Icon: {fileID: 0}

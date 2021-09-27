@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6341024487289314852}
   - component: {fileID: 6341024487289314853}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: US Rifle Squad
   m_TagString: Untagged
   m_Icon: {fileID: 0}

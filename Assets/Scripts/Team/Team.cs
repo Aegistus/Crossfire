@@ -90,7 +90,10 @@ public abstract class Team : MonoBehaviour
             }
             selectedUnits[i].Movement.Move(position);
         }
-        OnOrderMove?.Invoke(selectedUnits[0]);
+        if (selectedUnits.Count > 0)
+        {
+            OnOrderMove?.Invoke(selectedUnits[0]);
+        }
     }
 
     public void GiveMoveToCoverOrder(Cover cover)
