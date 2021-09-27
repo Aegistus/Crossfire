@@ -1,0 +1,366 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4910875979500239570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4910875979500239573}
+  - component: {fileID: 4910875979500239572}
+  m_Layer: 0
+  m_Name: German Rifle Squad
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4910875979500239573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4910875979500239570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 3539677347335218086}
+  - {fileID: 3539677348842011243}
+  - {fileID: 3539677347105404066}
+  - {fileID: 3539677347649296460}
+  - {fileID: 3539677347780855721}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4910875979500239572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4910875979500239570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f517eed32d8d1140bb1d66c5a6ca6a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentPositions:
+  - {x: 0, y: 0}
+  - {x: 2, y: 0}
+  - {x: -2, y: 0}
+  - {x: 1, y: -1}
+  - {x: -1, y: -1}
+--- !u!1001 &4910875979457460174
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4910875979500239573}
+    m_Modifications:
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819226, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_Name
+      value: German Rifleman (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+--- !u!4 &3539677348842011243 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+  m_PrefabInstance: {fileID: 4910875979457460174}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4910875979850774791
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4910875979500239573}
+    m_Modifications:
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819226, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_Name
+      value: German Rifleman (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+--- !u!4 &3539677347105404066 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+  m_PrefabInstance: {fileID: 4910875979850774791}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4910875980167360003
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4910875979500239573}
+    m_Modifications:
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819226, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_Name
+      value: German Rifleman
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+--- !u!4 &3539677347335218086 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+  m_PrefabInstance: {fileID: 4910875980167360003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4910875980346955241
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4910875979500239573}
+    m_Modifications:
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819226, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_Name
+      value: German Rifleman (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+--- !u!4 &3539677347649296460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+  m_PrefabInstance: {fileID: 4910875980346955241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4910875980527012364
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4910875979500239573}
+    m_Modifications:
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8446952331583819226, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+      propertyPath: m_Name
+      value: German Rifleman (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+--- !u!4 &3539677347780855721 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8446952331583819173, guid: 9b801bb7a1b134d44a56bab6f7345116, type: 3}
+  m_PrefabInstance: {fileID: 4910875980527012364}
+  m_PrefabAsset: {fileID: 0}

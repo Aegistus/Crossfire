@@ -8,6 +8,6 @@ public class OrientWeapon : MonoBehaviour
 
     private void Update()
     {
-        transform?.LookAt(weaponAnchor);
+        transform.GetChild(0)?.LookAt(weaponAnchor);
     }
 }
