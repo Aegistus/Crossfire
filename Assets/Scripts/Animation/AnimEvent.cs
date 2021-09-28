@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum AnimEvent
 {
-    Finish, Start
+    Finish, Start, Shoot
 }

@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
 
     public WeaponStats Stats { get => stats; }
 
-    public void Fire()
+    public void Shoot()
     {
         if (shotParticles != null)
         {

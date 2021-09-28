@@ -17,21 +17,25 @@ public class Shooting : AgentState
     public override void AfterExecution()
     {
         isFinished = false;
-        animation.OnAnimationEvent -= EndState;
+        animation.OnAnimationEvent -= CheckAnimationEvent;
     }
 
     public override void BeforeExecution()
     {
         Print("Shooting");
-        animation.OnAnimationEvent += EndState;
+        animation.OnAnimationEvent += CheckAnimationEvent;
         isFinished = false;
     }
 
-    private void EndState(AnimEvent animEvent)
+    private void CheckAnimationEvent(AnimEvent animEvent)
     {
         if (animEvent == AnimEvent.Finish)
         {
             isFinished = true;
+        }
+        else if (animEvent == AnimEvent.Shoot)
+        {
+            self.Weapon.Shoot();
         }
     }
 

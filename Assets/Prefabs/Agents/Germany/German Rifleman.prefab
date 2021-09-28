@@ -3088,6 +3088,7 @@ GameObject:
   - component: {fileID: 8446952331583819173}
   - component: {fileID: 8446952331583819172}
   - component: {fileID: 8446952331583819175}
+  - component: {fileID: 5106356757108212153}
   m_Layer: 0
   m_Name: German Rifleman
   m_TagString: Untagged
@@ -3152,6 +3153,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &5106356757108212153
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8446952331583819226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &6275009482764697247
 PrefabInstance:
   m_ObjectHideFlags: 0

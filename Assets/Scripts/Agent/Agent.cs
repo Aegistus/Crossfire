@@ -66,6 +66,5 @@ public class Agent : MonoBehaviour
     public void Shoot()
     {
         StateMachine.SwitchToNewState(typeof(Shooting));
-        Weapon.Fire();
     }
 }
