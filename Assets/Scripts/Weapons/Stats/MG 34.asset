@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: MG 34
   m_EditorClassIdentifier: 
   hitDice: 7
+  shotBursts: 7
+  shotInterval: 0.05

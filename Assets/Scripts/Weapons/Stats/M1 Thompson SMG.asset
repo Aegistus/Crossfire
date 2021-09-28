@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: M1 Thompson SMG
   m_EditorClassIdentifier: 
   hitDice: 2
+  shotBursts: 3
+  shotInterval: 0.1

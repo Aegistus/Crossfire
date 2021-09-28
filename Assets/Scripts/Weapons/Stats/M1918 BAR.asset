@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: M1918 BAR
   m_EditorClassIdentifier: 
   hitDice: 7
+  shotBursts: 5
+  shotInterval: 0.2
