@@ -37,7 +37,7 @@ public class SquadCombat
             int[] rolls = Dice.RollD6Multiple(diceNum);
             for (int i = 0; i < Agents.Count; i++)
             {
-                Agents[i].Shoot();
+                Agents[i].Shoot(target.Movement.Position);
             }
             bool attackSuccessful = target.Combat.ReceiveDamage(rolls);
             if (!attackSuccessful)

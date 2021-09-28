@@ -16,8 +16,8 @@ public abstract class Team : MonoBehaviour
     private void Awake()
     {
         Initiative.AddTeam(this);
-        OnOrderMove += CheckReactiveFire;
         unitsOnTeam.RemoveAll(squad => squad == null);
+        OnOrderMove += CheckReactiveFire;
         for (int i = 0; i < unitsOnTeam.Count; i++)
         {
             unitsOnTeam[i].OnSquadInitiativeFailure += GiveUpInitiative;

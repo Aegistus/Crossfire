@@ -63,8 +63,9 @@ public class Agent : MonoBehaviour
         Movement.Stop();
     }
 
-    public void Shoot()
+    public void Shoot(Vector3 position)
     {
         StateMachine.SwitchToNewState(typeof(Shooting));
+        Movement.LookAt(position);
     }
 }

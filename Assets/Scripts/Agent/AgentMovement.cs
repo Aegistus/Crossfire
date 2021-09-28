@@ -32,4 +32,9 @@ public class AgentMovement
     {
         navAgent.isStopped = true;
     }
+
+    public void LookAt(Vector3 position)
+    {
+        transform.LookAt(new Vector3(position.x, transform.position.y, position.z));
+    }
 }
