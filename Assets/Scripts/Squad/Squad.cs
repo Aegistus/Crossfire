@@ -16,6 +16,7 @@ public class Squad : MonoBehaviour
     public SquadCombat Combat { get; private set; }
     public SquadEffects Effects { get; private set; }
 
+    public bool Ready => !Movement.IsMoving && !Combat.Attacking;
     public CoverType Cover => GetCurrentCover();
     public List<Agent> Agents { get; private set; }
 

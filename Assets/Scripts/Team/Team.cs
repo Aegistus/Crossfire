@@ -10,6 +10,7 @@ public abstract class Team : MonoBehaviour
     public static event Action<Squad> OnOrderMove;
 
     public bool HasUnitsSelected => selectedUnits.Count > 0;
+    public bool ReadyForOrders => unitsOnTeam.Find(squad => !squad.Ready) == null;
 
     private List<Squad> selectedUnits = new List<Squad>();
 
@@ -45,6 +46,10 @@ public abstract class Team : MonoBehaviour
 
     public void SelectSquad(Squad toSelect)
     {
+        if (!ReadyForOrders)
+        {
+            return;
+        }
         if (Initiative.TeamWithInitiative != this)
         {
             print("You Do Not Have Initiative");
@@ -63,6 +68,10 @@ public abstract class Team : MonoBehaviour
 
     public void DeselectSquad(Squad toDeselect)
     {
+        if (!ReadyForOrders)
+        {
+            return;
+        }
         toDeselect.Selection.Deselect();
         selectedUnits.Remove(toDeselect);
     }
@@ -78,6 +87,10 @@ public abstract class Team : MonoBehaviour
 
     public void GiveMoveOrder(Vector3 position)
     {
+        if (!ReadyForOrders)
+        {
+            return;
+        }
         if (Initiative.TeamWithInitiative != this)
         {
             print("You Do Not Have Initiative");
@@ -99,6 +112,10 @@ public abstract class Team : MonoBehaviour
 
     public void GiveMoveToCoverOrder(Cover cover)
     {
+        if (!ReadyForOrders)
+        {
+            return;
+        }
         if (Initiative.TeamWithInitiative != this)
         {
             print("You Do Not Have Initiative");
@@ -120,6 +137,10 @@ public abstract class Team : MonoBehaviour
 
     public void GiveAttackOrderOnTarget(Squad enemySquad)
     {
+        if (!ReadyForOrders)
+        {
+            return;
+        }
         if (Initiative.TeamWithInitiative != this)
         {
             print("You Do Not Have Initiative");

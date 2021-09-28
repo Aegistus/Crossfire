@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SquadCombat
 {
-    LineOfSight los;
+    public bool Attacking => Agents.Find(agent => agent.StateMachine.CurrentState.GetType() == typeof(Shooting)) != null;
 
+    LineOfSight los;
     Squad squad;
     List<Agent> Agents => squad.Agents;
 
