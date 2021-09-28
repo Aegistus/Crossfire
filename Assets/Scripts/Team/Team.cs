@@ -39,7 +39,10 @@ public abstract class Team : MonoBehaviour
         {
             for (int i = 0; i < unitsOnTeam.Count; i++)
             {
-                unitsOnTeam[i].Combat.UpdateMovingSquads(movingSquad);
+                if (unitsOnTeam[i].isActiveAndEnabled)
+                {
+                    unitsOnTeam[i].Combat.UpdateMovingSquads(movingSquad);
+                }
             }
         }
     }

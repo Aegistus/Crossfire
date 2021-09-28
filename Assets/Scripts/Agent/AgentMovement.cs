@@ -17,6 +17,7 @@ public class AgentMovement
     public void SetDestination(Vector3 position)
     {
         navAgent.SetDestination(position);
+        navAgent.isStopped = false;
     }
 
     public void StopIfAtDestination()

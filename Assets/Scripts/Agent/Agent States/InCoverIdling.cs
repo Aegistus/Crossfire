@@ -18,6 +18,7 @@ public class InCoverIdling : AgentState
     public override void BeforeExecution()
     {
         Print("In Cover Idling");
+        self.Movement.LookAt(self.Cover.Forward);
     }
 
     public override void DuringExecution()

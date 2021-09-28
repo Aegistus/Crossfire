@@ -5,6 +5,7 @@ using UnityEngine;
 public class AgentCover
 {
     public Vector3 Position { get => currentCoverTransform.position; }
+    public Vector3 Forward { get => currentCoverTransform.position + currentCoverTransform.forward; }
     public CoverType CoverType => currentCover == null ? CoverType.NoCover : currentCover.Type;
     private Cover currentCover;
     private Transform currentCoverTransform;
@@ -21,6 +22,7 @@ public class AgentCover
         {
             currentCover.ReturnCoverPosition(currentCoverTransform);
             currentCover = null;
+            currentCoverTransform = null;
         }
     }
 }
