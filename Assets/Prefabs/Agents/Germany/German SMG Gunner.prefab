@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1824415195020349628}
   - component: {fileID: 1824415195020349629}
   - component: {fileID: 1824415195020349630}
+  - component: {fileID: 3906754840176506623}
   m_Layer: 0
   m_Name: German SMG Gunner
   m_TagString: Untagged
@@ -75,6 +76,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &3906754840176506623
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824415195020349635}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2101045181404394548
 GameObject:
   m_ObjectHideFlags: 0
@@ -3421,13 +3436,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7218b9ff0a53b024eb7eb8507669354d, type: 3}
---- !u!4 &5023139103803146890 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9135705870731010316, guid: 7218b9ff0a53b024eb7eb8507669354d, type: 3}
-  m_PrefabInstance: {fileID: 4286664268156298118}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2278255538154100890 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2657325162406165276, guid: 7218b9ff0a53b024eb7eb8507669354d, type: 3}
+  m_PrefabInstance: {fileID: 4286664268156298118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5023139103803146890 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9135705870731010316, guid: 7218b9ff0a53b024eb7eb8507669354d, type: 3}
   m_PrefabInstance: {fileID: 4286664268156298118}
   m_PrefabAsset: {fileID: 0}

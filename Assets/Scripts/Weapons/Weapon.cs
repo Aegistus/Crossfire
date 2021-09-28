@@ -17,7 +17,7 @@ public class Weapon : MonoBehaviour
         {
             for (int i = 0; i < shotParticles.Length; i++)
             {
-                shotParticles[i].Play();
+                shotParticles[i].Play(true);
             }
         }
     }
