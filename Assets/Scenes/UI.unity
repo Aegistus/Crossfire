@@ -670,7 +670,6 @@ GameObject:
   m_Component:
   - component: {fileID: 590535502}
   - component: {fileID: 590535504}
-  - component: {fileID: 590535503}
   m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
@@ -692,14 +691,6 @@ Transform:
   m_Father: {fileID: 447894620}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &590535503
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590535501}
-  m_Enabled: 1
 --- !u!20 &590535504
 Camera:
   m_ObjectHideFlags: 0
@@ -967,7 +958,6 @@ GameObject:
   m_Component:
   - component: {fileID: 991184650}
   - component: {fileID: 991184652}
-  - component: {fileID: 991184651}
   m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
@@ -989,14 +979,6 @@ Transform:
   m_Father: {fileID: 1524765585}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &991184651
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 991184649}
-  m_Enabled: 1
 --- !u!20 &991184652
 Camera:
   m_ObjectHideFlags: 0
@@ -1547,7 +1529,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1438154796}
   - component: {fileID: 1438154798}
-  - component: {fileID: 1438154797}
   m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
@@ -1569,14 +1550,6 @@ Transform:
   m_Father: {fileID: 1026953288}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1438154797
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1438154795}
-  m_Enabled: 1
 --- !u!20 &1438154798
 Camera:
   m_ObjectHideFlags: 0
@@ -2245,7 +2218,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1970354816}
   - component: {fileID: 1970354818}
-  - component: {fileID: 1970354817}
   m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
@@ -2267,14 +2239,6 @@ Transform:
   m_Father: {fileID: 1749650293}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1970354817
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970354815}
-  m_Enabled: 1
 --- !u!20 &1970354818
 Camera:
   m_ObjectHideFlags: 0
@@ -2328,7 +2292,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2024990910}
   - component: {fileID: 2024990912}
-  - component: {fileID: 2024990911}
   m_Layer: 9
   m_Name: Camera
   m_TagString: Untagged
@@ -2350,14 +2313,6 @@ Transform:
   m_Father: {fileID: 2086825082}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &2024990911
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024990909}
-  m_Enabled: 1
 --- !u!20 &2024990912
 Camera:
   m_ObjectHideFlags: 0
