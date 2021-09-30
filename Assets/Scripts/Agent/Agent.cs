@@ -26,10 +26,7 @@ public class Agent : MonoBehaviour
         Selection = new AgentSelection(selectionMarkers);
         Cover = new AgentCover();
         Effects = new AgentEffects(pinMarker, suppressionMarker);
-    }
 
-    private void Start()
-    {
         Dictionary<Type, State> states = new Dictionary<Type, State>()
         {
             {typeof(Idling), new Idling(gameObject) },
@@ -39,6 +36,11 @@ public class Agent : MonoBehaviour
             {typeof(Shooting), new Shooting(gameObject) },
         };
         StateMachine.SetStates(states, typeof(Idling));
+        StateMachine.ExecuteState();
+    }
+
+    private void Start()
+    {
         Weapon = GetComponentInChildren<Weapon>();
 
         Movement.SetDestination(transform.position);
