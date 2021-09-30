@@ -8,6 +8,8 @@ public abstract class Team : MonoBehaviour
     public List<Squad> unitsOnTeam = new List<Squad>();
 
     public static event Action<Squad> OnOrderMove;
+    public event Action<Squad> OnSelection;
+    public event Action<Squad> OnDeselection;
 
     public bool HasUnitsSelected => selectedUnits.Count > 0;
     public bool ReadyForOrders => unitsOnTeam.Find(squad => !squad.Ready) == null;
@@ -63,6 +65,7 @@ public abstract class Team : MonoBehaviour
         {
             toSelect.Selection.Select();
             selectedUnits.Add(toSelect);
+            OnSelection?.Invoke(toSelect);
         }
         else
         {
@@ -78,6 +81,7 @@ public abstract class Team : MonoBehaviour
         }
         toDeselect.Selection.Deselect();
         selectedUnits.Remove(toDeselect);
+        OnDeselection?.Invoke(toDeselect);
     }
 
     public void DeselectAll()
@@ -85,6 +89,7 @@ public abstract class Team : MonoBehaviour
         for (int i = 0; i < selectedUnits.Count; i++)
         {
             selectedUnits[i].Selection.Deselect();
+            OnDeselection?.Invoke(selectedUnits[i]);
         }
         selectedUnits.Clear();
     }

@@ -24,12 +24,11 @@ public class PlayerTeam : Team
         // left clicks
         if (Input.GetMouseButtonDown(0))
         {
-            print("Left click");
+            print("LMB");
             Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer, QueryTriggerInteraction.Collide);
             Squad selected = rayHit.collider?.GetComponentInParent<Squad>();
             if (selected != null)
             {
-                print("Test");
                 DeselectAll();
                 SelectSquad(selected);
             }
@@ -42,7 +41,7 @@ public class PlayerTeam : Team
         // right clicks
         if (Input.GetMouseButtonUp(1))
         {
-            print("Right click");
+            print("RMB");
             // check for enemy squad to attack
             Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer);
             if (rayHit.collider != null)

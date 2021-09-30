@@ -1482,6 +1482,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1397395523}
+  - component: {fileID: 1397395524}
   m_Layer: 5
   m_Name: Squad Actions
   m_TagString: Untagged
@@ -1510,6 +1511,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 310, y: 130}
   m_Pivot: {x: 1, y: 0}
+--- !u!114 &1397395524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397395522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde6b6ca19b60484992bbb1fcaea1347, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childElements:
+  - {fileID: 1358140839}
+  - {fileID: 1793880990}
 --- !u!1 &1438154795
 GameObject:
   m_ObjectHideFlags: 0
