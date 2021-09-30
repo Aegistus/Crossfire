@@ -17,6 +17,7 @@ public abstract class Team : MonoBehaviour
     private void Awake()
     {
         Initiative.AddTeam(this);
+        unitsOnTeam.AddRange(GetComponentsInChildren<Squad>());
         unitsOnTeam.RemoveAll(squad => squad == null);
         OnOrderMove += CheckReactiveFire;
         for (int i = 0; i < unitsOnTeam.Count; i++)
