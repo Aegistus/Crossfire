@@ -66,4 +66,11 @@ public class SquadEffects
             Agents[i].Effects.HideSuppressionMarker();
         }
     }
+
+    public void Rally()
+    {
+        Debug.Log("Unit rallied");
+        UnPin();
+        UnSuppress();
+    }
 }

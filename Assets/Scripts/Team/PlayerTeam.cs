@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System;
 
 public class PlayerTeam : Team
@@ -21,6 +22,10 @@ public class PlayerTeam : Team
     RaycastHit rayHit;
     private void Update()
     {
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         // left clicks
         if (Input.GetMouseButtonDown(0))
         {

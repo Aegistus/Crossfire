@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UISquadActions : MonoBehaviour
+public class UISquadActionPanel : MonoBehaviour
 {
     public List<GameObject> childElements;
 
@@ -56,5 +56,10 @@ public class UISquadActions : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void RallyButtonPressed()
+    {
+        playerTeam.GiveRallyOrder(currentInspectedSquad);
     }
 }

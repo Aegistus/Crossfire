@@ -164,4 +164,21 @@ public abstract class Team : MonoBehaviour
             }
         }
     }
+
+    public void GiveRallyOrder(Squad targetSquad)
+    {
+        if (!ReadyForOrders)
+        {
+            return;
+        }
+        if (Initiative.TeamWithInitiative != this)
+        {
+            print("You Do Not Have Initiative");
+            return;
+        }
+        if (targetSquad.Effects.IsPinned || targetSquad.Effects.IsSuppressed)
+        {
+            targetSquad.Effects.Rally();
+        }
+    }
 }
