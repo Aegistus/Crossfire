@@ -5,27 +5,32 @@ using System;
 
 public abstract class Team : MonoBehaviour
 {
-    public List<Squad> unitsOnTeam = new List<Squad>();
+    [SerializeField]
+    private List<Squad> squadsOnTeam = new List<Squad>();
 
-    public static event Action<Squad> OnOrderMove;
-    public event Action<Squad> OnSelection;
-    public event Action<Squad> OnDeselection;
+    public bool ReadyForOrders => squadsOnTeam.Find(squad => !squad.Ready) == null;
 
-    public bool HasUnitsSelected => selectedUnits.Count > 0;
-    public bool ReadyForOrders => unitsOnTeam.Find(squad => !squad.Ready) == null;
 
-    private List<Squad> selectedUnits = new List<Squad>();
+    public TeamSelection Selection { get; private set; }
+    public TeamOrders Orders { get; private set; }
 
     private void Awake()
     {
+        Selection = new TeamSelection(this);
+        Orders = new TeamOrders(this);
         Initiative.AddTeam(this);
-        unitsOnTeam.AddRange(GetComponentsInChildren<Squad>());
-        unitsOnTeam.RemoveAll(squad => squad == null);
-        OnOrderMove += CheckReactiveFire;
-        for (int i = 0; i < unitsOnTeam.Count; i++)
+        squadsOnTeam.AddRange(GetComponentsInChildren<Squad>());
+        squadsOnTeam.RemoveAll(squad => squad == null);
+        TeamOrders.OnOrderMove += CheckReactiveFire;
+        for (int i = 0; i < squadsOnTeam.Count; i++)
         {
-            unitsOnTeam[i].OnSquadInitiativeFailure += GiveUpInitiative;
+            squadsOnTeam[i].OnSquadInitiativeFailure += GiveUpInitiative;
         }
+    }
+
+    public bool SquadIsOnTeam(Squad squad)
+    {
+        return squadsOnTeam.Contains(squad);
     }
 
     protected void GiveUpInitiative()
@@ -40,145 +45,14 @@ public abstract class Team : MonoBehaviour
     {
         if (Initiative.TeamWithInitiative != this)
         {
-            for (int i = 0; i < unitsOnTeam.Count; i++)
+            for (int i = 0; i < squadsOnTeam.Count; i++)
             {
-                if (unitsOnTeam[i].isActiveAndEnabled)
+                if (squadsOnTeam[i].isActiveAndEnabled)
                 {
-                    unitsOnTeam[i].Combat.UpdateMovingSquads(movingSquad);
+                    squadsOnTeam[i].Combat.UpdateMovingSquads(movingSquad);
                 }
             }
         }
     }
 
-    public void SelectSquad(Squad toSelect)
-    {
-        if (!ReadyForOrders)
-        {
-            return;
-        }
-        if (Initiative.TeamWithInitiative != this)
-        {
-            print("You Do Not Have Initiative");
-            return;
-        }
-        if (unitsOnTeam.Contains(toSelect))
-        {
-            toSelect.Selection.Select();
-            selectedUnits.Add(toSelect);
-            OnSelection?.Invoke(toSelect);
-        }
-        else
-        {
-            print("Unit Not on Team");
-        }
-    }
-
-    public void DeselectSquad(Squad toDeselect)
-    {
-        if (!ReadyForOrders)
-        {
-            return;
-        }
-        toDeselect.Selection.Deselect();
-        selectedUnits.Remove(toDeselect);
-        OnDeselection?.Invoke(toDeselect);
-    }
-
-    public void DeselectAll()
-    {
-        for (int i = 0; i < selectedUnits.Count; i++)
-        {
-            selectedUnits[i].Selection.Deselect();
-            OnDeselection?.Invoke(selectedUnits[i]);
-        }
-        selectedUnits.Clear();
-    }
-
-    public void GiveMoveOrder(Vector3 position)
-    {
-        if (!ReadyForOrders)
-        {
-            return;
-        }
-        if (Initiative.TeamWithInitiative != this)
-        {
-            print("You Do Not Have Initiative");
-            return;
-        }
-        for (int i = 0; i < selectedUnits.Count; i++)
-        {
-            if (selectedUnits[i].Cover == CoverType.HalfCover || selectedUnits[i].Cover == CoverType.FullCover)
-            {
-                selectedUnits[i].Movement.MoveOutOfCover();
-            }
-            selectedUnits[i].Movement.Move(position);
-        }
-        if (selectedUnits.Count > 0)
-        {
-            OnOrderMove?.Invoke(selectedUnits[0]);
-        }
-    }
-
-    public void GiveMoveToCoverOrder(Cover cover)
-    {
-        if (!ReadyForOrders)
-        {
-            return;
-        }
-        if (Initiative.TeamWithInitiative != this)
-        {
-            print("You Do Not Have Initiative");
-            return;
-        }
-        if (cover.UnOccupied)
-        {
-            for (int i = 0; i < selectedUnits.Count; i++)
-            {
-                if (selectedUnits[i].Cover == CoverType.HalfCover || selectedUnits[i].Cover == CoverType.FullCover)
-                {
-                    selectedUnits[i].Movement.MoveOutOfCover();
-                }
-                selectedUnits[i].Movement.MoveToCover(cover);
-            }
-        }
-        OnOrderMove?.Invoke(selectedUnits[0]);
-    }
-
-    public void GiveAttackOrderOnTarget(Squad enemySquad)
-    {
-        if (!ReadyForOrders)
-        {
-            return;
-        }
-        if (Initiative.TeamWithInitiative != this)
-        {
-            print("You Do Not Have Initiative");
-            return;
-        }
-        if (!unitsOnTeam.Contains(enemySquad))
-        {
-            enemySquad.Movement.CentralizePosition();
-            for (int i = 0; i < selectedUnits.Count; i++)
-            {
-                selectedUnits[i].Combat.Attack(enemySquad);
-            }
-        }
-    }
-
-    public void GiveRallyOrder(Squad targetSquad)
-    {
-        if (!ReadyForOrders)
-        {
-            return;
-        }
-        if (Initiative.TeamWithInitiative != this)
-        {
-            print("You Do Not Have Initiative");
-            return;
-        }
-        if (targetSquad.Effects.IsPinned || targetSquad.Effects.IsSuppressed)
-        {
-            targetSquad.Effects.Rally();
-        }
-    }
 }

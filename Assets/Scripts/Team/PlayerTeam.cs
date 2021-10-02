@@ -34,12 +34,12 @@ public class PlayerTeam : Team
             Squad selected = rayHit.collider?.GetComponentInParent<Squad>();
             if (selected != null)
             {
-                DeselectAll();
-                SelectSquad(selected);
+                Selection.DeselectAll();
+                Selection.SelectSquad(selected);
             }
             else
             {
-                DeselectAll();
+                Selection.DeselectAll();
             }
         }
 
@@ -54,7 +54,7 @@ public class PlayerTeam : Team
                 Squad squad = rayHit.collider.GetComponentInParent<Squad>();
                 if (squad != null)
                 {
-                    GiveAttackOrderOnTarget(squad);
+                    Orders.GiveAttackOrderOnTarget(squad);
                 }
             }
             else
@@ -66,7 +66,7 @@ public class PlayerTeam : Team
                     Cover cover = rayHit.collider.GetComponentInParent<Cover>();
                     if (cover != null)
                     {
-                        GiveMoveToCoverOrder(cover);
+                        Orders.GiveMoveToCoverOrder(cover);
                     }
                 }
                 else // if no cover, check for ground
@@ -74,13 +74,13 @@ public class PlayerTeam : Team
                     Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, groundLayer);
                     if (rayHit.collider != null)
                     {
-                        GiveMoveOrder(rayHit.point);
+                        Orders.GiveMoveOrder(rayHit.point);
                     }
                 }
             }
         }
 
-        if (HasUnitsSelected)
+        if (Selection.HasUnitsSelected)
         {
             Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
             Cover cover = null;

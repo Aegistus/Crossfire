@@ -13,8 +13,8 @@ public class UISquadOrderPanel : MonoBehaviour
     private void Start()
     {
         FindPlayerTeam();
-        playerTeam.OnSelection += OnSquadSelection;
-        playerTeam.OnDeselection += OnSquadDeselection;
+        playerTeam.Selection.OnSelection += OnSquadSelection;
+        playerTeam.Selection.OnDeselection += OnSquadDeselection;
         HideUI();
     }
 

@@ -14,7 +14,10 @@ public class UIRallyButton : UIOrderButton
 
     public override void OnHideUI()
     {
-        targetSquad.Effects.OnEffectChange -= CheckSquadEffects;
+        if (targetSquad != null)
+        {
+            targetSquad.Effects.OnEffectChange -= CheckSquadEffects;
+        }
     }
 
     public override void OnShowUI()
