@@ -28,7 +28,7 @@ public abstract class Team : MonoBehaviour
         }
     }
 
-    private void GiveUpInitiative()
+    protected void GiveUpInitiative()
     {
         if (Initiative.TeamWithInitiative == this)
         {
