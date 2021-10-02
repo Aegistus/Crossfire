@@ -6,9 +6,9 @@ public class UIRallyButton : UIOrderButton
 {
     public override void ClickButton()
     {
-        if (targetSquad != null)
+        if (playerTeam != null && targetSquad != null)
         {
-            targetSquad.Effects.Rally();
+            playerTeam.Orders.GiveRallyOrder(targetSquad);
         }
     }
 

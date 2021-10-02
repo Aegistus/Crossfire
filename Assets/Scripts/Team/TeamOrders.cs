@@ -7,6 +7,8 @@ public class TeamOrders
 {
     public static event Action<Squad> OnOrderMove;
 
+    public bool GroupEvent { get; private set; }
+
     private Team team;
     private TeamSelection Selection => team.Selection;
 

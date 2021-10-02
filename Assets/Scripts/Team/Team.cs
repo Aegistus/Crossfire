@@ -10,14 +10,15 @@ public abstract class Team : MonoBehaviour
 
     public bool ReadyForOrders => squadsOnTeam.Find(squad => !squad.Ready) == null;
 
-
     public TeamSelection Selection { get; private set; }
     public TeamOrders Orders { get; private set; }
+    public GroupMove GroupMovement { get; private set; }
 
     private void Awake()
     {
         Selection = new TeamSelection(this);
         Orders = new TeamOrders(this);
+        GroupMovement = new GroupMove();
         Initiative.AddTeam(this);
         squadsOnTeam.AddRange(GetComponentsInChildren<Squad>());
         squadsOnTeam.RemoveAll(squad => squad == null);

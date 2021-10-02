@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class GroupMove
 {
-    private Dictionary<Squad, Vector3> movements = new Dictionary<Squad, Vector3>();
-    private Dictionary<Squad, Cover> coverMovements = new Dictionary<Squad, Cover>();
+    public bool Active { get; private set; }
     public Squad InitiatingSquad { get; private set; }
 
-    public GroupMove(Squad initiatingSquad)
+    private List<Squad> participatingSquads = new List<Squad>();
+    private Dictionary<Squad, Vector3> movements = new Dictionary<Squad, Vector3>();
+    private Dictionary<Squad, Cover> coverMovements = new Dictionary<Squad, Cover>();
+
+    public void StartNewGroupMove(Squad initiatingSquad)
     {
         InitiatingSquad = initiatingSquad;
+        Active = true;
+        participatingSquads.Clear();
+        movements.Clear();
+        coverMovements.Clear();
     }
 
     public void AddMovement(Squad squad, Vector3 position)
@@ -34,4 +41,5 @@ public class GroupMove
             squad.Movement.MoveToCover(coverMovements[squad]);
         }
     }
+
 }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using System;
 
 public class PlayerTeam : Team
 {
@@ -19,7 +18,9 @@ public class PlayerTeam : Team
     }
 
     Cover currentCoverUnderCursor;
-    RaycastHit rayHit;
+    RaycastHit squadRayHit;
+    RaycastHit coverRayHit;
+    RaycastHit groundRayHit;
     private void Update()
     {
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
@@ -30,70 +31,91 @@ public class PlayerTeam : Team
         if (Input.GetMouseButtonDown(0))
         {
             print("LMB");
-            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer, QueryTriggerInteraction.Collide);
-            Squad selected = rayHit.collider?.GetComponentInParent<Squad>();
-            if (selected != null)
-            {
-                Selection.DeselectAll();
-                Selection.SelectSquad(selected);
-            }
-            else
-            {
-                Selection.DeselectAll();
-            }
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out squadRayHit, 100f, selectablesLayer, QueryTriggerInteraction.Collide);
+            HandleLeftClick(squadRayHit.collider?.GetComponentInParent<Squad>());
         }
 
         // right clicks
         if (Input.GetMouseButtonUp(1))
         {
             print("RMB");
-            // check for enemy squad to attack
-            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer);
-            if (rayHit.collider != null)
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out squadRayHit, 100f, selectablesLayer);
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out coverRayHit, 100f, coverLayer);
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out groundRayHit, 100f, groundLayer);
+            if (squadRayHit.collider != null)
             {
-                Squad squad = rayHit.collider.GetComponentInParent<Squad>();
-                if (squad != null)
-                {
-                    Orders.GiveAttackOrderOnTarget(squad);
-                }
+                HandleRightClick(squadRayHit.collider.GetComponentInParent<Squad>());
             }
-            else
+            else if (coverRayHit.collider != null)
             {
-                // check for cover
-                Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
-                if (rayHit.collider != null)
-                {
-                    Cover cover = rayHit.collider.GetComponentInParent<Cover>();
-                    if (cover != null)
-                    {
-                        Orders.GiveMoveToCoverOrder(cover);
-                    }
-                }
-                else // if no cover, check for ground
-                {
-                    Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, groundLayer);
-                    if (rayHit.collider != null)
-                    {
-                        Orders.GiveMoveOrder(rayHit.point);
-                    }
-                }
+                HandleRightClick(coverRayHit.collider.GetComponentInParent<Cover>());
+            }
+            else if (groundRayHit.collider != null)
+            {
+                HandleRightClick(groundRayHit.point);
             }
         }
 
+        // show cover positions when units selected
         if (Selection.HasUnitsSelected)
         {
-            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out coverRayHit, 100f, coverLayer);
             Cover cover = null;
-            if (rayHit.collider != null)
+            if (coverRayHit.collider != null)
             {
-                cover = rayHit.collider.GetComponentInParent<Cover>();
+                cover = coverRayHit.collider.GetComponentInParent<Cover>();
             }
-            if (rayHit.collider == null || cover == null || currentCoverUnderCursor != cover)
+            if (coverRayHit.collider == null || cover == null || currentCoverUnderCursor != cover)
             {
                 currentCoverUnderCursor?.HideCoverIcons();
             }
             currentCoverUnderCursor = cover;
             currentCoverUnderCursor?.ShowCoverIcons();
+        }
+    }
+
+    public void HandleLeftClick(Squad squad)
+    {
+        if (squad != null)
+        {
+            Selection.DeselectAll();
+            Selection.SelectSquad(squad);
+        }
+        else
+        {
+            Selection.DeselectAll();
+        }
+    }
+
+    public void HandleRightClick(Squad squad)
+    {
+        if (squad != null)
+        {
+            Orders.GiveAttackOrderOnTarget(squad);
+        }
+    }
+
+    public void HandleRightClick(Cover cover)
+    {
+        if (!GroupMovement.Active)
+        {
+            Orders.GiveMoveToCoverOrder(cover);
+        }
+        else
+        {
+            GroupMovement.AddCoverMovement(Selection.SelectedUnits[0], cover);
+        }
+    }
+
+    public void HandleRightClick(Vector3 position)
+    {
+        if (!GroupMovement.Active)
+        {
+            Orders.GiveMoveOrder(position);
+        }
+        else
+        {
+            GroupMovement.AddMovement(Selection.SelectedUnits[0], position);
         }
     }
 }
