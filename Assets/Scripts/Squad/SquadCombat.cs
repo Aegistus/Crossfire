@@ -76,10 +76,6 @@ public class SquadCombat
             }
         }
         Debug.Log("Hits: " + hits);
-        for (int i = 0; i < hits && i < Agents.Count; i++)
-        {
-            Agents[i].Kill();
-        }
         if (hits > 1)
         {
             squad.Effects.Pin();
@@ -87,6 +83,10 @@ public class SquadCombat
         if (hits > 3)
         {
             squad.Effects.Suppress();
+        }
+        for (int i = 0; i < hits && i < Agents.Count; i++)
+        {
+            Agents[i].Kill();
         }
         Agents.RemoveAll(agent => agent.Health.IsAlive == false);
         if (hits == 0)
