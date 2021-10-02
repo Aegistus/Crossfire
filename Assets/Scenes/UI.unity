@@ -1275,7 +1275,7 @@ GameObject:
   - component: {fileID: 1397395523}
   - component: {fileID: 1397395524}
   m_Layer: 5
-  m_Name: Squad Actions
+  m_Name: Squad Order Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1317,6 +1317,8 @@ MonoBehaviour:
   childElements:
   - {fileID: 1358140839}
   - {fileID: 1793880990}
+  buttons:
+  - {fileID: 5820178794621668594}
 --- !u!1 &1438154795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3002,34 +3004,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rally Order Button
       objectReference: {fileID: 0}
-    - target: {fileID: 3218300096606968689, guid: 7045efffaec42ae4496bcf43966c808d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3218300096606968689, guid: 7045efffaec42ae4496bcf43966c808d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3218300096606968689, guid: 7045efffaec42ae4496bcf43966c808d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1397395524}
-    - target: {fileID: 3218300096606968689, guid: 7045efffaec42ae4496bcf43966c808d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3218300096606968689, guid: 7045efffaec42ae4496bcf43966c808d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RallyButtonPressed
-      objectReference: {fileID: 0}
-    - target: {fileID: 3218300096606968689, guid: 7045efffaec42ae4496bcf43966c808d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UISquadActionPanel, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 3218300096606968689, guid: 7045efffaec42ae4496bcf43966c808d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6091731451200892723, guid: 7045efffaec42ae4496bcf43966c808d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3116,6 +3090,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7045efffaec42ae4496bcf43966c808d, type: 3}
+--- !u!114 &5820178794621668594 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9073021992438085316, guid: 7045efffaec42ae4496bcf43966c808d, type: 3}
+  m_PrefabInstance: {fileID: 5820178794621668593}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd64a2a698342154da5574b14fbd15a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &8072168093112228920
 MeshFilter:
   m_ObjectHideFlags: 0

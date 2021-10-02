@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SquadEffects
 {
+    public event Action OnEffectChange;
+
     public bool IsPinned { get; private set; } = false;
     public bool IsSuppressed { get; private set; } = false;
 
@@ -26,6 +29,7 @@ public class SquadEffects
                 Agents[i].Effects.ShowPinMarker();
             }
             squad.Movement.Stop();
+            OnEffectChange?.Invoke();
         }
     }
 
@@ -45,6 +49,7 @@ public class SquadEffects
                 Agents[i].Effects.ShowSuppressionMarker();
             }
             squad.Movement.Stop();
+            OnEffectChange?.Invoke();
         }
         squad.InitiativeFailure();
     }
@@ -72,5 +77,6 @@ public class SquadEffects
         Debug.Log("Unit rallied");
         UnPin();
         UnSuppress();
+        OnEffectChange?.Invoke();
     }
 }

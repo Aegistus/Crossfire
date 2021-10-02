@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UISquadActionPanel : MonoBehaviour
+public class UISquadOrderPanel : MonoBehaviour
 {
     public List<GameObject> childElements;
+    public List<UIOrderButton> buttons;
 
     private PlayerTeam playerTeam;
     private Squad currentInspectedSquad;
@@ -20,6 +21,7 @@ public class UISquadActionPanel : MonoBehaviour
     private void OnSquadSelection(Squad squad)
     {
         currentInspectedSquad = squad;
+        BindDisplayToSquad();
         ShowUI();
     }
 
@@ -29,11 +31,23 @@ public class UISquadActionPanel : MonoBehaviour
         HideUI();
     }
 
+    private void BindDisplayToSquad()
+    {
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            buttons[i].BindUI(currentInspectedSquad, playerTeam);
+        }
+    }
+
     public void ShowUI()
     {
         for (int i = 0; i < childElements.Count; i++)
         {
             childElements[i].SetActive(true);
+        }
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            buttons[i].OnShowUI();
         }
     }
 
@@ -42,6 +56,10 @@ public class UISquadActionPanel : MonoBehaviour
         for (int i = 0; i < childElements.Count; i++)
         {
             childElements[i].SetActive(false);
+        }
+        for (int i = 0; i < buttons.Count; i++)
+        {
+            buttons[i].OnHideUI();
         }
     }
 
@@ -56,10 +74,5 @@ public class UISquadActionPanel : MonoBehaviour
                 break;
             }
         }
-    }
-
-    public void RallyButtonPressed()
-    {
-        playerTeam.GiveRallyOrder(currentInspectedSquad);
     }
 }

@@ -19,6 +19,7 @@ public class UILoader : MonoBehaviour
         {
             Destroy(this);
         }
+        LoadUI();
     }
 
     private void Update()
@@ -27,23 +28,23 @@ public class UILoader : MonoBehaviour
         {
             if (uiLoaded)
             {
-                HideUI();
+                UnloadUI();
             }
             else
             {
-                ShowUI();
+                LoadUI();
             }
         }
     }
 
-    public void ShowUI()
+    public void LoadUI()
     {
         SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
         uiScene = SceneManager.GetSceneByName("UI");
         uiLoaded = true;
     }
 
-    public void HideUI()
+    public void UnloadUI()
     {
         SceneManager.UnloadSceneAsync(uiScene);
         uiLoaded = false;
