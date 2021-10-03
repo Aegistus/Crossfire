@@ -5,17 +5,17 @@ using UnityEngine;
 public class ShootCommand : SquadCommand
 {
     private Squad attackTarget;
-    private Team receiverTeam;
+    private Team squadTeam;
 
-    public ShootCommand(Squad receiver, Team receiverTeam, Squad attackTarget) : base(receiver)
+    public ShootCommand(Squad squad, Team squadTeam, Squad attackTarget) : base(squad)
     {
         this.attackTarget = attackTarget;
-        this.receiverTeam = receiverTeam;
+        this.squadTeam = squadTeam;
     }
 
     public override void Execute()
     {
-        if (!receiverTeam.SquadIsOnTeam(attackTarget))
+        if (!squadTeam.SquadIsOnTeam(attackTarget))
         {
             attackTarget.Movement.CentralizePosition();
             squad.Combat.Attack(attackTarget);

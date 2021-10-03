@@ -8,7 +8,7 @@ public abstract class Team : MonoBehaviour
     [SerializeField]
     private List<Squad> squadsOnTeam = new List<Squad>();
 
-    public bool ReadyForOrders => squadsOnTeam.Find(squad => !squad.Ready) == null;
+    public bool AllSquadsReady => squadsOnTeam.Find(squad => !squad.Ready) == null;
 
     public TeamSelection Selection { get; private set; }
     public TeamOrders Orders { get; private set; }
@@ -52,6 +52,11 @@ public abstract class Team : MonoBehaviour
                 }
             }
         }
+    }
+
+    protected virtual void Update()
+    {
+        Orders.ExecuteCommand();
     }
 
 }

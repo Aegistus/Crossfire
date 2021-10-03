@@ -8,7 +8,7 @@ public class UIRallyButton : UIOrderButton
     {
         if (playerTeam != null && targetSquad != null)
         {
-            playerTeam.Orders.GiveRallyOrder(targetSquad);
+            playerTeam.Orders.AddCommandToQueue(new RallyCommand(targetSquad));
         }
     }
 
