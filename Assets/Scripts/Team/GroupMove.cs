@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GroupMove
 {
-    public bool Active { get; private set; }
+    public bool Active { get; private set; } = false;
     public Squad InitiatingSquad { get; private set; }
 
     private List<Squad> participatingSquads = new List<Squad>();
@@ -18,16 +18,23 @@ public class GroupMove
         participatingSquads.Clear();
         movements.Clear();
         coverMovements.Clear();
+        Debug.Log("Starting Group Move");
     }
 
     public void AddMovement(Squad squad, Vector3 position)
     {
-        movements.Add(squad, position);
+        if (!movements.ContainsKey(squad) && !coverMovements.ContainsKey(squad))
+        {
+            movements.Add(squad, position);
+        }
     }
 
     public void AddCoverMovement(Squad squad, Cover cover)
     {
-        coverMovements.Add(squad, cover);
+        if (!movements.ContainsKey(squad) && !coverMovements.ContainsKey(squad))
+        {
+            coverMovements.Add(squad, cover);
+        }
     }
 
     public void ExecuteMove()

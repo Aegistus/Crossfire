@@ -19,6 +19,7 @@ public class TeamOrders
 
     public void GiveMoveOrder(Vector3 position)
     {
+        Debug.Log("Test");
         if (!team.ReadyForOrders)
         {
             return;

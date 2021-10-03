@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class UISquadOrderPanel : MonoBehaviour
 {
     public List<GameObject> childElements;
-    public List<UIOrderButton> buttons;
-
+    
+    private List<UIOrderButton> buttons;
     private PlayerTeam playerTeam;
     private Squad currentInspectedSquad;
 
     private void Start()
     {
+        buttons = GetComponentsInChildren<UIOrderButton>().ToList();
         FindPlayerTeam();
         playerTeam.Selection.OnSelection += OnSquadSelection;
         playerTeam.Selection.OnDeselection += OnSquadDeselection;

@@ -12,6 +12,7 @@ public abstract class UIOrderButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
+        button.onClick.AddListener(ClickButton);
     }
 
     public void BindUI(Squad targetSquad, Team playerTeam)
