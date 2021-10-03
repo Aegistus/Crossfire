@@ -17,9 +17,5 @@ public class GroupMoveCommand : SquadCommand
         {
             squadTeam.Orders.PauseCommandExecution();
         }
-        else
-        {
-            squadTeam.Orders.ResumeCommandExecution();
-        }
     }
 }

@@ -7,9 +7,14 @@ public class UIGroupMoveButton : UIOrderButton
 
     public override void ClickButton()
     {
-        if (targetSquad != null)
+        print("Test 01");
+        if (playerTeam.Orders.ExecuteOrders)
         {
             playerTeam.Orders.AddCommandToQueue(new GroupMoveCommand(targetSquad, playerTeam));
+        }
+        else
+        {
+            playerTeam.Orders.ResumeCommandExecution();
         }
     }
 

@@ -6,15 +6,15 @@ using System.Linq;
 public class UISquadOrderPanel : MonoBehaviour
 {
     public List<GameObject> childElements;
-    
+
     private List<UIOrderButton> buttons;
     private PlayerTeam playerTeam;
     private Squad currentInspectedSquad;
 
     private void Start()
     {
-        buttons = GetComponentsInChildren<UIOrderButton>().ToList();
         FindPlayerTeam();
+        buttons = GetComponentsInChildren<UIOrderButton>().ToList();
         playerTeam.Selection.OnSelection += OnSquadSelection;
         playerTeam.Selection.OnDeselection += OnSquadDeselection;
         HideUI();
