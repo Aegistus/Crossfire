@@ -44,15 +44,15 @@ public class PlayerTeam : Team
             Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out groundRayHit, 100f, groundLayer);
             if (squadRayHit.collider != null)
             {
-                HandleRightClick(squadRayHit.collider.GetComponentInParent<Squad>());
+                AddNewCommand(new AttackTargetCommand(Selection.SelectedUnits[0], this, squadRayHit.collider.GetComponentInParent<Squad>()));
             }
             else if (coverRayHit.collider != null)
             {
-                HandleRightClick(coverRayHit.collider.GetComponentInParent<Cover>());
+                AddNewCommand(new MoveToCoverCommand(Selection.SelectedUnits[0], coverRayHit.collider.GetComponentInParent<Cover>()));
             }
             else if (groundRayHit.collider != null)
             {
-                HandleRightClick(groundRayHit.point);
+                AddNewCommand(new MoveToPointCommand(Selection.SelectedUnits[0], groundRayHit.point));
             }
         }
 
@@ -84,38 +84,6 @@ public class PlayerTeam : Team
         else
         {
             Selection.DeselectAll();
-        }
-    }
-
-    public void HandleRightClick(Squad squad)
-    {
-        if (squad != null)
-        {
-            Orders.GiveAttackOrderOnTarget(squad);
-        }
-    }
-
-    public void HandleRightClick(Cover cover)
-    {
-        if (!GroupMovement.Active)
-        {
-            Orders.GiveMoveToCoverOrder(cover);
-        }
-        else
-        {
-            GroupMovement.AddCoverMovement(Selection.SelectedUnits[0], cover);
-        }
-    }
-
-    public void HandleRightClick(Vector3 position)
-    {
-        if (!GroupMovement.Active)
-        {
-            Orders.GiveMoveOrder(position);
-        }
-        else
-        {
-            GroupMovement.AddMovement(Selection.SelectedUnits[0], position);
         }
     }
 }

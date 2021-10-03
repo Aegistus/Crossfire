@@ -9,16 +9,15 @@ public abstract class Team : MonoBehaviour
     private List<Squad> squadsOnTeam = new List<Squad>();
 
     public bool ReadyForOrders => squadsOnTeam.Find(squad => !squad.Ready) == null;
+    private bool executeOrders = true;
 
     public TeamSelection Selection { get; private set; }
-    public TeamOrders Orders { get; private set; }
-    public GroupMove GroupMovement { get; private set; }
+
+    private Queue<SquadCommand> commandQueue = new Queue<SquadCommand>();
 
     private void Awake()
     {
         Selection = new TeamSelection(this);
-        Orders = new TeamOrders(this);
-        GroupMovement = new GroupMove();
         Initiative.AddTeam(this);
         squadsOnTeam.AddRange(GetComponentsInChildren<Squad>());
         squadsOnTeam.RemoveAll(squad => squad == null);
@@ -32,6 +31,42 @@ public abstract class Team : MonoBehaviour
     public bool SquadIsOnTeam(Squad squad)
     {
         return squadsOnTeam.Contains(squad);
+    }
+
+    public void StartGroupMovement()
+    {
+        executeOrders = false;
+    }
+
+    public void ExecuteGroupMovement()
+    {
+        executeOrders = true;
+        StartCoroutine(OrderCoroutine());
+    }
+
+    public void AddNewCommand(SquadCommand command)
+    {
+        commandQueue.Enqueue(command);
+    }
+
+    private IEnumerator OrderCoroutine()
+    {
+        while (commandQueue.Count > 0 && executeOrders)
+        {
+            if (Initiative.TeamWithInitiative != this)
+            {
+                Debug.Log("You Do Not Have Initiative");
+                commandQueue.Clear();
+            }
+            if (!ReadyForOrders)
+            {
+                yield return null;
+            }
+            else
+            {
+                commandQueue.Dequeue().Execute();
+            }
+        }
     }
 
     protected void GiveUpInitiative()
