@@ -7,7 +7,7 @@ public class TeamOrders
 {
     public static event Action<Squad> OnOrderMove;
 
-    public bool ExecuteOrders { get; set; } = true;
+    public bool ExecuteOrders { get; private set; } = true;
     public bool HasCommands => commandQueue.Count > 0;
 
     private Queue<SquadCommand> commandQueue = new Queue<SquadCommand>();
@@ -18,9 +18,18 @@ public class TeamOrders
         this.team = team;
     }
 
+    public void PauseCommandExecution()
+    {
+        ExecuteOrders = false;
+    }
+
+    public void ResumeCommandExecution()
+    {
+        ExecuteOrders = true;
+    }
+
     public void AddCommandToQueue(SquadCommand command)
     {
-        Debug.Log("Test 02");
         commandQueue.Enqueue(command);
     }
 
@@ -36,7 +45,6 @@ public class TeamOrders
             commandQueue.Clear();
             return;
         }
-        Debug.Log("Test 03");
         SquadCommand command = commandQueue.Dequeue();
         command.Execute();
         if (command.GetType() == typeof(MoveCommand) || command.GetType() == typeof(CoverMoveCommand))
