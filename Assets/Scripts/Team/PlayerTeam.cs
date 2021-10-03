@@ -20,9 +20,8 @@ public class PlayerTeam : Team
 
     Cover currentCoverUnderCursor;
     RaycastHit rayHit;
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
         // return if cursor over UI
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {

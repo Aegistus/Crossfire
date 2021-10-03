@@ -25,6 +25,7 @@ public abstract class Team : MonoBehaviour
         {
             squadsOnTeam[i].OnSquadInitiativeFailure += GiveUpInitiative;
         }
+        StartCoroutine(CommandExecutionCheck());
     }
 
     public bool SquadIsOnTeam(Squad squad)
@@ -54,9 +55,13 @@ public abstract class Team : MonoBehaviour
         }
     }
 
-    protected virtual void Update()
+    public IEnumerator CommandExecutionCheck()
     {
-        Orders.ExecuteCommand();
+        while (true)
+        {
+            yield return new WaitForSeconds(.2f);
+            Orders.ExecuteCommand();
+        }
     }
 
 }
