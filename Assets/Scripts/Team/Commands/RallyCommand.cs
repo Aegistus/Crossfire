@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class RallyCommand : SquadCommand
 {
-    public RallyCommand(Squad receiver) : base(receiver)
+    public RallyCommand(Squad squad) : base(squad)
     {
 
     }
 
     public override void Execute()
     {
-        if (receiver.Effects.IsPinned || receiver.Effects.IsSuppressed)
+        if (squad.Effects.IsPinned || squad.Effects.IsSuppressed)
         {
-            receiver.Effects.Rally();
+            squad.Effects.Rally();
         }
     }
 }

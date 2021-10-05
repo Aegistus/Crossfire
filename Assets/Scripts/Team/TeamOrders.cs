@@ -7,102 +7,49 @@ public class TeamOrders
 {
     public static event Action<Squad> OnOrderMove;
 
-    public bool GroupEvent { get; private set; }
+    public bool ExecuteOrders { get; private set; } = true;
+    public bool HasCommands => commandQueue.Count > 0;
 
+    private Queue<SquadCommand> commandQueue = new Queue<SquadCommand>();
     private Team team;
-    private TeamSelection Selection => team.Selection;
 
     public TeamOrders(Team team)
     {
         this.team = team;
     }
 
-    public void GiveMoveOrder(Vector3 position)
+    public void PauseCommandExecution()
     {
-        Debug.Log("Test");
-        if (!team.ReadyForOrders)
-        {
-            return;
-        }
-        if (Initiative.TeamWithInitiative != team)
-        {
-            Debug.Log("You Do Not Have Initiative");
-            return;
-        }
-        for (int i = 0; i < Selection.SelectedUnits.Count; i++)
-        {
-            if (Selection.SelectedUnits[i].Cover == CoverType.HalfCover || Selection.SelectedUnits[i].Cover == CoverType.FullCover)
-            {
-                Selection.SelectedUnits[i].Movement.MoveOutOfCover();
-            }
-            Selection.SelectedUnits[i].Movement.Move(position);
-        }
-        if (Selection.SelectedUnits.Count > 0)
-        {
-            OnOrderMove?.Invoke(Selection.SelectedUnits[0]);
-        }
+        ExecuteOrders = false;
     }
 
-    public void GiveMoveToCoverOrder(Cover cover)
+    public void ResumeCommandExecution()
     {
-        if (!team.ReadyForOrders)
-        {
-            return;
-        }
-        if (Initiative.TeamWithInitiative != team)
-        {
-            Debug.Log("You Do Not Have Initiative");
-            return;
-        }
-        if (cover.UnOccupied)
-        {
-            for (int i = 0; i < Selection.SelectedUnits.Count; i++)
-            {
-                if (Selection.SelectedUnits[i].Cover == CoverType.HalfCover || Selection.SelectedUnits[i].Cover == CoverType.FullCover)
-                {
-                    Selection.SelectedUnits[i].Movement.MoveOutOfCover();
-                }
-                Selection.SelectedUnits[i].Movement.MoveToCover(cover);
-            }
-        }
-        OnOrderMove?.Invoke(Selection.SelectedUnits[0]);
+        ExecuteOrders = true;
     }
 
-    public void GiveAttackOrderOnTarget(Squad enemySquad)
+    public void AddCommandToQueue(SquadCommand command)
     {
-        if (!team.ReadyForOrders)
-        {
-            return;
-        }
-        if (Initiative.TeamWithInitiative != team)
-        {
-            Debug.Log("You Do Not Have Initiative");
-            return;
-        }
-        if (!team.SquadIsOnTeam(enemySquad))
-        {
-            enemySquad.Movement.CentralizePosition();
-            for (int i = 0; i < Selection.SelectedUnits.Count; i++)
-            {
-                Selection.SelectedUnits[i].Combat.Attack(enemySquad);
-            }
-        }
+        commandQueue.Enqueue(command);
     }
 
-    public void GiveRallyOrder(Squad targetSquad)
+    public void ExecuteCommand()
     {
-        if (!team.ReadyForOrders)
+        if (!team.AllSquadsReady || !ExecuteOrders || !HasCommands)
         {
             return;
         }
         if (Initiative.TeamWithInitiative != team)
         {
-            Debug.Log("You Do Not Have Initiative");
+            Debug.Log("You Do Not Have the Initiative");
+            commandQueue.Clear();
             return;
         }
-        if (targetSquad.Effects.IsPinned || targetSquad.Effects.IsSuppressed)
+        SquadCommand command = commandQueue.Dequeue();
+        command.Execute();
+        if (command.GetType() == typeof(MoveCommand) || command.GetType() == typeof(CoverMoveCommand))
         {
-            targetSquad.Effects.Rally();
+            OnOrderMove(command.Squad);
         }
     }
 }

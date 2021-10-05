@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
 public class PlayerTeam : Team
 {
@@ -18,72 +19,89 @@ public class PlayerTeam : Team
     }
 
     Cover currentCoverUnderCursor;
-    RaycastHit squadRayHit;
-    RaycastHit coverRayHit;
-    RaycastHit groundRayHit;
-    private void Update()
+    RaycastHit rayHit;
+    protected void Update()
     {
+        // return if cursor over UI
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
         {
             return;
         }
+        // return if command underway
+        if (!AllSquadsReady)
+        {
+            return;
+        }
+
         // left clicks
         if (Input.GetMouseButtonDown(0))
         {
             print("LMB");
-            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out squadRayHit, 100f, selectablesLayer, QueryTriggerInteraction.Collide);
-            HandleLeftClick(squadRayHit.collider?.GetComponentInParent<Squad>());
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer, QueryTriggerInteraction.Collide);
+            Squad selected = rayHit.collider?.GetComponentInParent<Squad>();
+            if (selected != null)
+            {
+                Selection.DeselectAll();
+                Selection.SelectSquad(selected);
+            }
+            else
+            {
+                Selection.DeselectAll();
+            }
         }
 
         // right clicks
         if (Input.GetMouseButtonUp(1))
         {
             print("RMB");
-            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out squadRayHit, 100f, selectablesLayer);
-            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out coverRayHit, 100f, coverLayer);
-            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out groundRayHit, 100f, groundLayer);
-            if (squadRayHit.collider != null)
+            // check for enemy squad to attack
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, selectablesLayer);
+            if (rayHit.collider != null)
             {
-                AddNewCommand(new AttackTargetCommand(Selection.SelectedUnits[0], this, squadRayHit.collider.GetComponentInParent<Squad>()));
+                Squad squad = rayHit.collider.GetComponentInParent<Squad>();
+                if (squad != null)
+                {
+                    Orders.AddCommandToQueue(new ShootCommand(Selection.SelectedUnits[0], this, squad));
+                }
             }
-            else if (coverRayHit.collider != null)
+            else
             {
-                AddNewCommand(new MoveToCoverCommand(Selection.SelectedUnits[0], coverRayHit.collider.GetComponentInParent<Cover>()));
-            }
-            else if (groundRayHit.collider != null)
-            {
-                AddNewCommand(new MoveToPointCommand(Selection.SelectedUnits[0], groundRayHit.point));
+                // check for cover
+                Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
+                if (rayHit.collider != null)
+                {
+                    Cover cover = rayHit.collider.GetComponentInParent<Cover>();
+                    if (cover != null)
+                    {
+                        Orders.AddCommandToQueue(new CoverMoveCommand(Selection.SelectedUnits[0], cover));
+                    }
+                }
+                else // if no cover, check for ground
+                {
+                    Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, groundLayer);
+                    if (rayHit.collider != null)
+                    {
+                        print("Test 01");
+                        Orders.AddCommandToQueue(new MoveCommand(Selection.SelectedUnits[0], rayHit.point));
+                    }
+                }
             }
         }
 
-        // show cover positions when units selected
         if (Selection.HasUnitsSelected)
         {
-            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out coverRayHit, 100f, coverLayer);
+            Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, coverLayer);
             Cover cover = null;
-            if (coverRayHit.collider != null)
+            if (rayHit.collider != null)
             {
-                cover = coverRayHit.collider.GetComponentInParent<Cover>();
+                cover = rayHit.collider.GetComponentInParent<Cover>();
             }
-            if (coverRayHit.collider == null || cover == null || currentCoverUnderCursor != cover)
+            if (rayHit.collider == null || cover == null || currentCoverUnderCursor != cover)
             {
                 currentCoverUnderCursor?.HideCoverIcons();
             }
             currentCoverUnderCursor = cover;
             currentCoverUnderCursor?.ShowCoverIcons();
-        }
-    }
-
-    public void HandleLeftClick(Squad squad)
-    {
-        if (squad != null)
-        {
-            Selection.DeselectAll();
-            Selection.SelectSquad(squad);
-        }
-        else
-        {
-            Selection.DeselectAll();
         }
     }
 }

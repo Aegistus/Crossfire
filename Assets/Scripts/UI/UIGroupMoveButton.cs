@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class UIGroupMoveButton : UIOrderButton
 {
+
     public override void ClickButton()
     {
-        if (!playerTeam.GroupMovement.Active)
+        print("Test 01");
+        if (playerTeam.Orders.ExecuteOrders)
         {
-            playerTeam.GroupMovement.StartNewGroupMove(targetSquad);
+            playerTeam.Orders.AddCommandToQueue(new GroupMoveCommand(targetSquad, playerTeam));
         }
         else
         {
-            playerTeam.GroupMovement.ExecuteMove();
+            playerTeam.Orders.ResumeCommandExecution();
         }
     }
 

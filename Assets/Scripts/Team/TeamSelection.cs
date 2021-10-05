@@ -21,7 +21,7 @@ public class TeamSelection
 
     public void SelectSquad(Squad toSelect)
     {
-        if (!team.ReadyForOrders)
+        if (!team.AllSquadsReady)
         {
             return;
         }
@@ -44,7 +44,7 @@ public class TeamSelection
 
     public void DeselectSquad(Squad toDeselect)
     {
-        if (!team.ReadyForOrders)
+        if (!team.AllSquadsReady)
         {
             return;
         }
