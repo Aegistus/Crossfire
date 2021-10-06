@@ -81,7 +81,6 @@ public class PlayerTeam : Team
                     Physics.Raycast(mainCam.ScreenPointToRay(Input.mousePosition), out rayHit, 100f, groundLayer);
                     if (rayHit.collider != null)
                     {
-                        print("Test 01");
                         Orders.AddCommandToQueue(new MoveCommand(Selection.SelectedUnits[0], rayHit.point));
                     }
                 }

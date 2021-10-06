@@ -9,6 +9,7 @@ public class CoverMoveCommand : SquadCommand
     public CoverMoveCommand(Squad receiver, Cover cover) : base(receiver)
     {
         this.cover = cover;
+        receiver.Movement.CalculatePath(cover.transform.position);
     }
 
     public override void Execute()

@@ -84,4 +84,12 @@ public class SquadMovement
             Agents[i].Movement.Stop();
         }
     }
+
+    public void CalculatePath(Vector3 destination)
+    {
+        for (int i = 0; i < Agents.Count; i++)
+        {
+            Agents[i].Movement.CalculatePath(new Vector3(destination.x + agentPositions[i].x, destination.y, destination.z + agentPositions[i].y));
+        }
+    }
 }

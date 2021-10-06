@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,5 +38,11 @@ public class AgentMovement
     public void LookAt(Vector3 position)
     {
         transform.LookAt(new Vector3(position.x, transform.position.y, position.z));
+    }
+
+    internal void CalculatePath(Vector3 destination)
+    {
+        navAgent.isStopped = true;
+        navAgent.SetDestination(destination);
     }
 }

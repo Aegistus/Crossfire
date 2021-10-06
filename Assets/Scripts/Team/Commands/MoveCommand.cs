@@ -9,6 +9,7 @@ public class MoveCommand : SquadCommand
     public MoveCommand(Squad receiver, Vector3 position) : base(receiver)
     {
         this.position = position;
+        receiver.Movement.CalculatePath(position);
     }
 
     public override void Execute()

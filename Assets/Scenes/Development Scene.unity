@@ -262,6 +262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: US Platoon Commander Squad
       objectReference: {fileID: 0}
+    - target: {fileID: 7978616905500530721, guid: 7525a3b3a7cc9614883bb913ea1faaf6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7978616905500530726, guid: 7525a3b3a7cc9614883bb913ea1faaf6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -320,13 +324,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2041813964}
     m_Modifications:
+    - target: {fileID: 1108149468303227708, guid: 21baf1f2e25125b4283f41f989b025d9, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1108149468303227708, guid: 21baf1f2e25125b4283f41f989b025d9, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.25194788
+      objectReference: {fileID: 0}
     - target: {fileID: 6341024487289314851, guid: 21baf1f2e25125b4283f41f989b025d9, type: 3}
       propertyPath: m_Name
       value: US Rifle Squad
       objectReference: {fileID: 0}
     - target: {fileID: 6341024487289314852, guid: 21baf1f2e25125b4283f41f989b025d9, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6341024487289314852, guid: 21baf1f2e25125b4283f41f989b025d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -741,6 +753,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: German MG Squad
       objectReference: {fileID: 0}
+    - target: {fileID: 2968995340417440704, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2968995340417440711, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -802,6 +818,10 @@ PrefabInstance:
     - target: {fileID: 2968995340417440704, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
       propertyPath: m_Name
       value: German MG Squad (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968995340417440704, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2968995340417440711, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
       propertyPath: m_RootOrder
@@ -869,9 +889,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: US Rifle Squad (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6341024487289314851, guid: 21baf1f2e25125b4283f41f989b025d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6341024487289314852, guid: 21baf1f2e25125b4283f41f989b025d9, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6341024487289314852, guid: 21baf1f2e25125b4283f41f989b025d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1048,8 +1072,8 @@ Transform:
   m_LocalPosition: {x: -1.06, y: 0.6895269, z: -13.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1554825777}
   - {fileID: 448390537}
+  - {fileID: 1554825777}
   - {fileID: 379789407}
   m_Father: {fileID: 0}
   m_RootOrder: 1
