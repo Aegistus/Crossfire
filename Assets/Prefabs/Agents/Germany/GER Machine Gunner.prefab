@@ -3090,7 +3090,7 @@ GameObject:
   - component: {fileID: 8420634993557085995}
   - component: {fileID: 3609844001184357245}
   m_Layer: 0
-  m_Name: German Machine Gunner
+  m_Name: GER Machine Gunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3150,7 +3150,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.8
-  m_BaseOffset: 0
+  m_BaseOffset: 0.18
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &3609844001184357245

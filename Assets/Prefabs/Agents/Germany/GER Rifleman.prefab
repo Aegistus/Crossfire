@@ -3090,7 +3090,7 @@ GameObject:
   - component: {fileID: 8446952331583819175}
   - component: {fileID: 5106356757108212153}
   m_Layer: 0
-  m_Name: German Rifleman
+  m_Name: GER Rifleman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3150,7 +3150,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.8
-  m_BaseOffset: 0
+  m_BaseOffset: 0.18
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &5106356757108212153

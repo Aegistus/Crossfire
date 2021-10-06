@@ -861,6 +861,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2041813964}
     m_Modifications:
+    - target: {fileID: 416910155125635478, guid: 21baf1f2e25125b4283f41f989b025d9, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6341024487289314851, guid: 21baf1f2e25125b4283f41f989b025d9, type: 3}
       propertyPath: m_Name
       value: US Rifle Squad (1)

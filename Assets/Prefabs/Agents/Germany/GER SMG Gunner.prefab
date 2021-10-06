@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1824415195020349630}
   - component: {fileID: 3906754840176506623}
   m_Layer: 0
-  m_Name: German SMG Gunner
+  m_Name: GER SMG Gunner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,7 +73,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.8
-  m_BaseOffset: 0
+  m_BaseOffset: 0.18
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &3906754840176506623
