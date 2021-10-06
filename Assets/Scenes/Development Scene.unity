@@ -262,10 +262,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: US Platoon Commander Squad
       objectReference: {fileID: 0}
-    - target: {fileID: 7978616905500530721, guid: 7525a3b3a7cc9614883bb913ea1faaf6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7978616905500530726, guid: 7525a3b3a7cc9614883bb913ea1faaf6, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -309,6 +305,10 @@ PrefabInstance:
     - target: {fileID: 7978616905500530726, guid: 7525a3b3a7cc9614883bb913ea1faaf6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607447583505566334, guid: 7525a3b3a7cc9614883bb913ea1faaf6, type: 3}
+      propertyPath: m_Name
+      value: PC Marker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7525a3b3a7cc9614883bb913ea1faaf6, type: 3}
