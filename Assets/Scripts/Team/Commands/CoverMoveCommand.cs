@@ -9,6 +9,10 @@ public class CoverMoveCommand : SquadCommand
     public CoverMoveCommand(Squad receiver, Cover cover) : base(receiver)
     {
         this.cover = cover;
+        if (squad.Effects.IsPinned || squad.Effects.IsSuppressed)
+        {
+            return;
+        }
         receiver.Movement.CalculatePath(cover.transform.position);
     }
 

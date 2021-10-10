@@ -9,6 +9,10 @@ public class MoveCommand : SquadCommand
     public MoveCommand(Squad receiver, Vector3 position) : base(receiver)
     {
         this.position = position;
+        if (squad.Effects.IsPinned || squad.Effects.IsSuppressed)
+        {
+            return;
+        }
         receiver.Movement.CalculatePath(position);
     }
 

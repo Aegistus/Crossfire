@@ -33,6 +33,7 @@ public class AgentMovement
     public void Stop()
     {
         navAgent.isStopped = true;
+        SetDestination(transform.position);
     }
 
     public void LookAt(Vector3 position)
@@ -40,7 +41,7 @@ public class AgentMovement
         transform.LookAt(new Vector3(position.x, transform.position.y, position.z));
     }
 
-    internal void CalculatePath(Vector3 destination)
+    public void CalculatePath(Vector3 destination)
     {
         navAgent.isStopped = true;
         navAgent.SetDestination(destination);
