@@ -6,7 +6,7 @@ public class AITeam : Team
 {
     private void Start()
     {
-        Initiative.OnInitiativeChange += AutoGiveUpInitiative;
+        //Initiative.OnInitiativeChange += AutoGiveUpInitiative;
     }
 
     // for testing purposes

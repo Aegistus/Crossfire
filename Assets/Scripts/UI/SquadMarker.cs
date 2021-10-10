@@ -27,7 +27,7 @@ public class SquadMarker : MonoBehaviour
         {
             childIcon.SetActive(true);
         }
-        transform.position = squad.Movement.Position;
+        transform.position = new Vector3(squad.Movement.Position.x, squad.Movement.Position.y + 3, squad.Movement.Position.z);
         transform.LookAt(camTransform);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }

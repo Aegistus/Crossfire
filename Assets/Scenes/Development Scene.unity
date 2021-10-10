@@ -753,10 +753,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: German MG Squad
       objectReference: {fileID: 0}
-    - target: {fileID: 2968995340417440704, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2968995340417440711, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -767,7 +763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2968995340417440711, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.42
       objectReference: {fileID: 0}
     - target: {fileID: 2968995340417440711, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -819,10 +815,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: German MG Squad (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 2968995340417440704, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2968995340417440711, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -833,7 +825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2968995340417440711, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2968995340417440711, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1006,6 +998,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squadsOnTeam: []
+  teamMaterial: {fileID: 2100000, guid: c69249370d906eb46a9c9b4d1e375516, type: 2}
+  teamName: GER [AI]
 --- !u!4 &1769034412
 Transform:
   m_ObjectHideFlags: 0
@@ -1052,6 +1046,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   squadsOnTeam: []
+  teamMaterial: {fileID: 2100000, guid: ab330b2d8923f9b459ee00eae8a8d825, type: 2}
+  teamName: US [Player]
   selectablesLayer:
     serializedVersion: 2
     m_Bits: 64

@@ -32,6 +32,7 @@ public static class Initiative
                 TeamWithInitiative = GetNextTeam();
             }
             gameStarted = true;
+            OnInitiativeChange?.Invoke(TeamWithInitiative);
         }
     }
 

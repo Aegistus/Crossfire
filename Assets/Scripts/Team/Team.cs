@@ -5,11 +5,14 @@ using System;
 
 public abstract class Team : MonoBehaviour
 {
-    [SerializeField]
-    private List<Squad> squadsOnTeam = new List<Squad>();
+    [SerializeField] private List<Squad> squadsOnTeam = new List<Squad>();
+    [SerializeField] private Material teamMaterial;
+    [SerializeField] private string teamName;
+
+    public Material TeamMaterial => teamMaterial;
+    public string TeamName => teamName;
 
     public bool AllSquadsReady => squadsOnTeam.Find(squad => !squad.Ready) == null;
-
     public TeamSelection Selection { get; private set; }
     public TeamOrders Orders { get; private set; }
 

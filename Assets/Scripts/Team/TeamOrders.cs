@@ -49,7 +49,7 @@ public class TeamOrders
         command.Execute();
         if (command.GetType() == typeof(MoveCommand) || command.GetType() == typeof(CoverMoveCommand))
         {
-            OnOrderMove(command.Squad);
+            OnOrderMove?.Invoke(command.Squad);
         }
     }
 }

@@ -80,7 +80,7 @@ public class SquadCombat
         {
             squad.Effects.Pin();
         }
-        if (hits > 3)
+        if (hits > 2)
         {
             squad.Effects.Suppress();
         }
