@@ -14,9 +14,13 @@ public class MoveCommand : SquadCommand
 
     public override void Execute()
     {
+        if (squad.Effects.IsPinned || squad.Effects.IsSuppressed)
+        {
+            return;
+        }
         if (squad.Cover == CoverType.HalfCover || squad.Cover == CoverType.FullCover)
         {
-            squad.Movement.MoveOutOfCover();
+            squad.Movement.LeaveCover();
         }
         squad.Movement.Move(position);
     }

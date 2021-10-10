@@ -5,7 +5,6 @@ using System;
 
 public class TeamOrders
 {
-    public static event Action<Squad> OnOrderMove;
 
     public bool ExecuteOrders { get; private set; } = true;
     public bool HasCommands => commandQueue.Count > 0;
@@ -47,9 +46,5 @@ public class TeamOrders
         }
         SquadCommand command = commandQueue.Dequeue();
         command.Execute();
-        if (command.GetType() == typeof(MoveCommand) || command.GetType() == typeof(CoverMoveCommand))
-        {
-            OnOrderMove?.Invoke(command.Squad);
-        }
     }
 }

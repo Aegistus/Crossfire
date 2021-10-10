@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SquadMovement
 {
+    public static event Action<Squad> OnOrderMove;
+
     public bool IsMoving => Agents.Find(agent => agent.StateMachine.CurrentState.GetType() == typeof(Walking)) != null;
     public Vector3 Position { get; private set; }
 
@@ -50,6 +53,7 @@ public class SquadMovement
         {
             Agents[i].Movement.SetDestination(new Vector3(destination.x + agentPositions[i].x, destination.y, destination.z + agentPositions[i].y));
         }
+        OnOrderMove?.Invoke(squad);
     }
 
     public void MoveToCover(Cover cover)
@@ -63,9 +67,10 @@ public class SquadMovement
             Agents[i].Cover.EnterCover(cover);
             Agents[i].Movement.SetDestination(Agents[i].Cover.Position);
         }
+        OnOrderMove?.Invoke(squad);
     }
 
-    public void MoveOutOfCover()
+    public void LeaveCover()
     {
         if (squad.Effects.IsPinned || squad.Effects.IsSuppressed)
         {

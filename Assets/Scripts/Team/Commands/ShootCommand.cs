@@ -15,6 +15,10 @@ public class ShootCommand : SquadCommand
 
     public override void Execute()
     {
+        if (squad.Effects.IsSuppressed)
+        {
+            return;
+        }
         if (!squadTeam.SquadIsOnTeam(attackTarget))
         {
             attackTarget.Movement.CentralizePosition();

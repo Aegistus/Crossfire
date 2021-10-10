@@ -23,7 +23,7 @@ public abstract class Team : MonoBehaviour
         Initiative.AddTeam(this);
         squadsOnTeam.AddRange(GetComponentsInChildren<Squad>());
         squadsOnTeam.RemoveAll(squad => squad == null);
-        TeamOrders.OnOrderMove += CheckReactiveFire;
+        SquadMovement.OnOrderMove += CheckReactiveFire;
         for (int i = 0; i < squadsOnTeam.Count; i++)
         {
             squadsOnTeam[i].OnSquadInitiativeFailure += GiveUpInitiative;
@@ -46,7 +46,7 @@ public abstract class Team : MonoBehaviour
 
     private void CheckReactiveFire(Squad movingSquad)
     {
-        if (Initiative.TeamWithInitiative != this)
+        if (Initiative.TeamWithInitiative != this && !SquadIsOnTeam(movingSquad))
         {
             for (int i = 0; i < squadsOnTeam.Count; i++)
             {

@@ -815,6 +815,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: German MG Squad (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2968995340417440704, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2968995340417440711, guid: 0b2faf63981df914ab7ad122c692512d, type: 3}
       propertyPath: m_RootOrder
       value: 1
