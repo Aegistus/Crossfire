@@ -89,6 +89,10 @@ public class SquadCombat
             Agents[i].Kill();
         }
         Agents.RemoveAll(agent => agent.Health.IsAlive == false);
+        if (Agents.Count == 0)
+        {
+            squad.Kill();
+        }
         if (hits == 0)
         {
             return false;

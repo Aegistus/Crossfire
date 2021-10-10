@@ -78,4 +78,9 @@ public class Squad : MonoBehaviour
         OnSquadInitiativeFailure?.Invoke();
     }
 
+    public void Kill()
+    {
+        InitiativeFailure();
+    }
+
 }
