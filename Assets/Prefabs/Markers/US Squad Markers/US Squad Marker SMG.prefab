@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855970370359056455}
   - component: {fileID: 6831319508283906175}
+  - component: {fileID: -2590208455709566913}
   m_Layer: 0
   m_Name: US Squad Marker SMG
   m_TagString: Untagged
@@ -78,6 +79,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cullDistance: 5
+--- !u!65 &-2590208455709566913
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855970370359056452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.78, z: 0.35}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &856962857314707411
 GameObject:
   m_ObjectHideFlags: 0

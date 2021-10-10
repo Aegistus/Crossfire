@@ -522,6 +522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7778090279686953792}
   - component: {fileID: 4530040152271051640}
+  - component: {fileID: -993064425344115807}
   m_Layer: 0
   m_Name: GER Squad Marker SMG
   m_TagString: Untagged
@@ -557,6 +558,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cullDistance: 10
+--- !u!65 &-993064425344115807
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7778090279686953795}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.78, z: 0.35}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7778090279985311659
 GameObject:
   m_ObjectHideFlags: 0
